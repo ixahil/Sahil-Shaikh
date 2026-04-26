@@ -37,18 +37,48 @@
         Background: {{ section.settings.bg_color }};
     }
 
-    .cta{
+    .cta {
+        position: relative;
         display: inline-flex;
-        align-items:center;
-        justify-content:center;
+        align-items: center;
+        justify-content: center;
         gap: 16px;
-        text-decoration: none;
-        text-transform:uppercase;
-        cursor: pointer;
         width: 220px;
         height: 50px;
+        text-transform: uppercase;
+        text-decoration: none;
+        overflow: hidden;
+        cursor: pointer;
+
+        background: #FFF544;
+        color: #000;
+
         transition: color 0.3s ease;
-    }
+        }
+
+        .cta::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: #000;
+
+        transform: translateX(-100%);
+        transition: transform 0.4s ease;
+        z-index: 0;
+        }
+
+        .cta:hover::before {
+        transform: translateX(0);
+        }
+
+        .cta span {
+        position: relative;
+        z-index: 1;
+        }
+
+        .cta:hover {
+        color: #FFF544;
+        }
 
     .cta-primary{background: #FFF544; color: #000000;}
     .cta-seconda{background: #000000; color: #ffffff;}
