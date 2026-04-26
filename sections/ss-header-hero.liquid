@@ -2,8 +2,14 @@
     Header Hero
 {% endcomment %}
 
+{% style %}
+  .custom-header{
+    Background: {{ section.settings.bg_color }};
+  }
+{% endstyle %}
+
 <!-- Header -->
-<header>
+<header class="custom-header">
 
     <!-- Mobile Menu -->
     <details class="main-menu__disclosure mobile-only">
