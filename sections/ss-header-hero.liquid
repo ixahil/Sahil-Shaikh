@@ -50,7 +50,7 @@
   {% if section.settings.header_cta_label %}
     <div class="custom-header__buttons desktop-only">
       {% comment %} Buttons or login icons {% endcomment %}
-      {% if section.settings.header_cta_label %}
+      {% if section.settings.header_cta_label != blank %}
         <a href="{{ section.settings.header_cta_link }}" class="cta cta-primary">
           <span>{{ section.settings.header_cta_label | escape }}</span>
           <span class="icon">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
@@ -64,13 +64,13 @@
 <div class="custom-hero">
   <div class="custom-hero__image-wrap">
     <div class="custom-hero__overlay-content">
-      {% if section.settings.hero_heading %}
+      {% if section.settings.hero_heading != blank %}
         <h2>{{ section.settings.hero_heading | escape }}</h2>
       {% endif %}
-      {% if section.settings.hero_description %}
+      {% if section.settings.hero_description != blank %}
         <p>{{ section.settings.hero_description }}</p>
       {% endif %}
-      {% if section.settings.hero_cta_label %}
+      {% if section.settings.hero_cta_label != blank %}
         <a href="{{ section.settings.hero_cta_link }}" class="cta cta-secondary custom-hero__overlay-btn">
           <span>{{ section.settings.hero_cta_label | escape }}</span>
           <span class="icon">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
@@ -93,9 +93,12 @@
 </div>
 
 <!-- HERO Footer Strip -->
-<div class="custom-footer-strip">
-  <p>{{ section.settings.footer_text }}</p>
-</div>
+{% if section.settings.footer_text != blank %}
+  <div class="custom-footer-strip">
+    <p>{{ section.settings.footer_text }}</p>
+  </div>
+{% endif %}
+
 {% schema %}
 {
   "name": "SS Header Hero",
