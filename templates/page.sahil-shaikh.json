@@ -22,6 +22,7 @@
       "name": "SS Header Banner",
       "settings": {
         "logo_type": "logo",
+        "logo_image": "shopify://shop_images/logo.png",
         "logo_text": "",
         "logo_url": "",
         "tagline": "Find the ideal gift for your loved ones.",
