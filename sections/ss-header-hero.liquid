@@ -2,7 +2,17 @@
     Header Hero
 {% endcomment %}
 
-<div>TEST</div>
+<!-- Header -->
+<header>
+
+    <!-- Mobile Menu -->
+    <details class="main-menu__disclosure mobile-only">
+        <summary class="main-menu__toggle-icon">
+            <span class="icon-menu">{{ 'icon-menu-hamburger.svg' | inline_asset_content }}</span>
+            <span class="icon-close">{{ 'icon-menu-close.svg' | inline_asset_content }}</span>
+        </summary>
+    </details>
+</header>
 
 
 {% schema %}
