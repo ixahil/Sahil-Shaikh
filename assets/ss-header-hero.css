@@ -135,6 +135,7 @@
         align-items:center;
         text-align:center;
         gap:28px;
+        max-width: 100%;
     }
 
     .custom-hero__overlay-content h2{font-size:30px;}
