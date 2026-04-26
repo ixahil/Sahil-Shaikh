@@ -1,0 +1,47 @@
+{% comment %} 
+    Header Hero
+{% endcomment %}
+
+
+{% schema %}
+{
+    "name": "SS Header Hero",
+    "tag": "section",
+    "class": "section cc-header-hero",
+    "presets": [{"name": "SS Header Banner", "category": "Ecommexperts Hiring Test"}],
+    "settings": [
+        {"type": "header", "content": "Top bar"},
+        {
+            "type": "select", "label": "Logo type", "id": "logo_type",
+            "options": [{"label": "Logo", "value": "logo"}, {"label": "text", "value": "Text"}],
+            "default": "logo"
+        },
+        {"type": "image_picker", "label": "Logo image", "id": "logo_image", "visible_if": "{{ section.settings.logo_type == 'logo' }}"},
+        {"type": "text", "label": "Logo text", "id": "logo_text", "visible_if": "{{ section.settings.logo_type == 'text' }}"},
+        {"type": "url", "label": "Logo link", "id": "logo_url"},
+        {"type": "text", "label": "Center tagline", "id": "tagline", "default": "Find the ideal gift for your loved ones."},
+        {"type": "text", "label": "Button label", "id": "header_cta_label", "default": "Choose Gift"},
+        {"type": "url", "label": "Button link", "id": "header_cta_link"},
+
+        {"type": "header", "content": "Hero image/content"},
+        {"type": "image_picker", "label": "Desktop Image", "id": "desktop_image"},
+        {"type": "image_picker", "label": "Mobile Image", "id": "mobile_image"},
+
+        {"type": "paragraph", "content": "Overlay content for hero"},
+        {"type": "text", "label": "Heading", "id": "hero_heading", "default": "The Gift Guide"},
+        {"type": "textarea", "label": "Description", "id": "hero_description", "default": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season."},
+        {"type": "text", "label": "Button label", "id": "hero_cta_label", "default": "Shop Now"},
+        {"type": "url", "label": "Button link", "id": "hero_cta_link"},
+
+        {"type": "header", "content": "Footer strip"},
+        {"type": "textarea", "label": "Strip text", "id": "footer_text", "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"},
+
+
+        {"type": "header", "content": "Colors"},
+        {"type": "color", "label": "Text color", "id": "text_color", "default": "#000000"},
+        {"type": "color", "label": "Background color", "id": "bg_color", "default": "#F5F5F5"},
+        
+    ]
+
+}
+{% endschema %}
