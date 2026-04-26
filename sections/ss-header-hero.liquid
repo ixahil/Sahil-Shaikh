@@ -80,12 +80,12 @@
     {% if section.settings.desktop_image != blank %}
       {{ section.settings.desktop_image | image_url: width: 2000 | image_tag: class: 'custom-hero__desktop-image' }}
     {% else %}
-      {{ 'blog-apparel-2' | placeholder_svg_tag: 'blog-placeholder-svg' }}
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
     {% endif %}
     {% if section.settings.desktop_image != blank %}
       {{ section.settings.mobile_image | image_url: width: 800 | image_tag: class: 'custom-hero__mobile-image' }}
     {% else %}
-      {{ 'blog-apparel-2' | placeholder_svg_tag: 'blog-placeholder-svg' }}
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
     {% endif %}
   </div>
 </div>
