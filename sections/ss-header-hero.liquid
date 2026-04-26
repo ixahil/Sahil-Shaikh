@@ -96,7 +96,9 @@
   /* MOBILE */
   @media screen and (max-width: 990px){
       .custom-header{padding: 24px 16px;}
-      .custom-header__logo{grid-columns: 2; justify-self:center;}
+      .custom-header__logo{grid-columns: 2; justify-self:center}
+      .custom-hero__desktop-image{display:none;}
+                           
   }
 
   /* DESKTOP */
@@ -107,6 +109,7 @@
       .desktop-only{
           display: unset;
       }
+      .custom-hero__mobile-image{display:none;}
   }
 {% endstyle %}
 
@@ -153,9 +156,7 @@
 <!-- HERO Banner -->
 <div class="custom-hero">
   <div class="custom-hero__image-wrap">
-    {{ section.settings.desktop_image | image_url: width: 2000 | image_tag: class: "custom-hero__desktop-image" }}
-    {{ section.settings.mobile_image | image_url: width: 800 | image_tag: class: "custom-hero__mobile-image" }}
-    <div class="custom-hero__overlay-content">
+     <div class="custom-hero__overlay-content">
       <h2>{{ section.settings.hero_heading | escape }}</h2>
       <p>{{ section.settings.hero_description }}</p>
       <a href="{{ section.settings.hero_cta_link }}" class="cta cta-secondary custom-hero__overlay-btn">
@@ -163,6 +164,8 @@
         <span class="icon">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
       </a>
     </div>
+    {{ section.settings.desktop_image | image_url: width: 2000 | image_tag: class: "custom-hero__desktop-image" }}
+    {{ section.settings.mobile_image | image_url: width: 800 | image_tag: class: "custom-hero__mobile-image" }}
   </div>
 </div>
 
