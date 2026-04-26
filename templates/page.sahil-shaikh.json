@@ -21,7 +21,7 @@
       "type": "ss-header-hero",
       "name": "SS Header Banner",
       "settings": {
-        "logo_type": "logo",
+        "logo_type": "Text",
         "logo_text": "",
         "logo_url": "",
         "tagline": "Find the ideal gift for your loved ones.",
