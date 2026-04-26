@@ -23,7 +23,7 @@
       "settings": {
         "logo_type": "logo",
         "logo_image": "shopify://shop_images/logo.png",
-        "logo_text": "",
+        "logo_text": "test",
         "logo_url": "",
         "tagline": "Find the ideal gift for your loved ones.",
         "header_cta_label": "Choose Gift",
