@@ -79,8 +79,8 @@
     width: 100%;
 }
 
-.custom-hero__desktop-image,
-.custom-hero__mobile-image{
+.custom-hero__desktop-image img,
+.custom-hero__mobile-image img{
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -125,7 +125,7 @@
 
     .custom-hero__desktop-image{display:none;}
 
-    .custom-hero__mobile-image{
+    .custom-hero__mobile-image img{
         height: 100%;
         object-position: center;
         aspect-ratio: 3/2;
