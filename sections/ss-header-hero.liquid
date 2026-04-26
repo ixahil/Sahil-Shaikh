@@ -3,14 +3,15 @@
 {% endcomment %}
 
 {% style %}
-    
-
     #shopify-section-{{ section.id }}{
-        /* font-family: 'Jost', sans-serif; */
+        font-family: 'Jost', sans-serif;
+        font-size: 16px;
+        letter-spacing: 0;
+        color: {{ section.settings.text_color }};
     }
-  .custom-header{
-    Background: {{ section.settings.bg_color }};
-  }
+    .custom-header{
+        Background: {{ section.settings.bg_color }};
+    }
 {% endstyle %}
 
 <!-- Header -->
