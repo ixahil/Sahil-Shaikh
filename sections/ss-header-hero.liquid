@@ -55,6 +55,13 @@
             <span class="icon-menu icon">{{ 'icon-menu-hamburger.svg' | inline_asset_content }}</span>
             <span class="icon-close icon">{{ 'icon-menu-close.svg' | inline_asset_content }}</span>
         </summary>
+        <div class="main-menu__content">
+            <p>{{ section.settings.tagline }}</p>
+             <a href="{{ section.settings.header_cta_link }}">
+                {{ section.settings.header_cta_label | escape }}
+                <span class="icon">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
+            </a>
+        </div>
     </details>
 
     <!-- Desktop Menu -->
