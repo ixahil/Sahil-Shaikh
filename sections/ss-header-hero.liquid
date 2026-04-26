@@ -64,7 +64,7 @@
      <div class="custom-hero__overlay-content">
      {% if section.settings.hero_heading %} <h2>{{ section.settings.hero_heading | escape }}</h2> {% endif %}
      {% if section.settings.hero_description  %}<p>{{ section.settings.hero_description }}</p> {% endif %}
-     {% if section.settings.hero_cta_label != blank %}
+     {% if section.settings.hero_cta_label %}
       <a href="{{ section.settings.hero_cta_link }}" class="cta cta-secondary custom-hero__overlay-btn">
         <span>{{ section.settings.hero_cta_label | escape }}</span>
         <span class="icon">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
