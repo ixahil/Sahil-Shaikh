@@ -78,14 +78,23 @@
       {% endif %}
     </div>
     {% if section.settings.desktop_image != blank %}
-      {{ section.settings.desktop_image | image_url: width: 2000 | image_tag: class: 'custom-hero__desktop-image' }}
+      <div class="custom-hero__desktop-image">
+        {{ section.settings.desktop_image | image_url: width: 2000 }}
+      </div>
     {% else %}
-      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg', class: "test" }}
+      <div class="custom-hero__desktop-image">
+        {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
     {% endif %}
-    {% if section.settings.desktop_image != blank %}
-      {{ section.settings.mobile_image | image_url: width: 800 | image_tag: class: 'custom-hero__mobile-image' }}
+
+    {% if section.settings.mobile_image != blank %}
+      <div class="custom-hero__mobile-image">
+        {{ section.settings.mobile_image | image_url: width: 800 | image_tag: class: 'custom-hero__mobile-image' }}
+      </div>
     {% else %}
-      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg', class: "test" }}
+      <div class="custom-hero__mobile-image">
+        {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
     {% endif %}
   </div>
 </div>
