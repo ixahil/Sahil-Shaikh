@@ -14,7 +14,9 @@
         align-items:center;
         padding: 10px 50px;
         Background: {{ section.settings.bg_color }};
-
+    }
+    .desktop-only{
+        display:none;
     }
 
 
@@ -22,6 +24,9 @@
     @media screen and (min-width: 990px){
         .mobile-only{
             display:none;
+        }
+        .desktop-only{
+            display: unset;
         }
     }
 {% endstyle %}
@@ -46,12 +51,12 @@
         {% endif %}
     </a>
 
-    <div class="custom-header__center">
+    <div class="custom-header__center desktop-only">
         {% comment %} Menu Can be here {% endcomment %}
          <p>{{ section.settings.tagline }}</p>
     </div>
 
-    <div class="custom-header__buttons">
+    <div class="custom-header__buttons desktop-only">
         {% comment %} Buttons or login icons {% endcomment %}
          <a href="{{ section.settings.header_cta_link }}">
             {{ section.settings.header_cta_label | escape }}
