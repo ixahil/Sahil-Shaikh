@@ -79,7 +79,7 @@
     </div>
     {% if section.settings.desktop_image != blank %}
       <div class="custom-hero__desktop-image">
-        {{ section.settings.desktop_image | image_url: width: 2000 }}
+        {{ section.settings.desktop_image | image_url: width: 2000 | image_tag }}
       </div>
     {% else %}
       <div class="custom-hero__desktop-image">
@@ -89,7 +89,7 @@
 
     {% if section.settings.mobile_image != blank %}
       <div class="custom-hero__mobile-image">
-        {{ section.settings.mobile_image | image_url: width: 800 | image_tag: class: 'custom-hero__mobile-image' }}
+        {{ section.settings.mobile_image | image_url: width: 800 | image_tag }}
       </div>
     {% else %}
       <div class="custom-hero__mobile-image">
