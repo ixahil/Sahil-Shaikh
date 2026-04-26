@@ -41,12 +41,13 @@
       {{ section.settings.logo_text | escape | default: 'Logo Text' }}
     {% endif %}
   </a>
-
+{% if section.settings.tagline %}
   <div class="custom-header__center desktop-only">
     {% comment %} Menu Can be here {% endcomment %}
     <p>{{ section.settings.tagline }}</p>
   </div>
-
+{% endif %}
+{% if section.settings.header_cta_label %}
   <div class="custom-header__buttons desktop-only">
     {% comment %} Buttons or login icons {% endcomment %}
     <a href="{{ section.settings.header_cta_link }}" class="cta cta-primary">
@@ -54,21 +55,24 @@
       <span class="icon">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
     </a>
   </div>
+  {% endif %}
 </header>
 
 <!-- HERO Banner -->
 <div class="custom-hero">
   <div class="custom-hero__image-wrap">
      <div class="custom-hero__overlay-content">
-      <h2>{{ section.settings.hero_heading | escape }}</h2>
-      <p>{{ section.settings.hero_description }}</p>
+     {% if section.settings.hero_heading %} <h2>{{ section.settings.hero_heading | escape }}</h2> {% endif %}
+     {% if section.settings.hero_description  %}<p>{{ section.settings.hero_description }}</p> {% endif %}
+     {% if section.settings.hero_cta_label %}
       <a href="{{ section.settings.hero_cta_link }}" class="cta cta-secondary custom-hero__overlay-btn">
         <span>{{ section.settings.hero_cta_label | escape }}</span>
         <span class="icon">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
       </a>
+    {% endif %}
     </div>
-    {{ section.settings.desktop_image | image_url: width: 2000 | image_tag: class: "custom-hero__desktop-image" }}
-    {{ section.settings.mobile_image | image_url: width: 800 | image_tag: class: "custom-hero__mobile-image" }}
+    {{ section.settings.desktop_image | image_url: width: 2000 | image_tag: class: "custom-hero__desktop-image" | default: "blog-apparel-2" }}
+    {{ section.settings.mobile_image | image_url: width: 800 | image_tag: class: "custom-hero__mobile-image" | default: "blog-apparel-2" }}
   </div>
 </div>
 
