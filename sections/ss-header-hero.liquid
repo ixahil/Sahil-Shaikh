@@ -1,202 +1,231 @@
-{% comment %} 
-    Header Hero
+{% comment %}
+  Header Hero
 {% endcomment %}
 
 {% style %}
-    #shopify-section-{{ section.id }}{
-        font-family: 'Jost', sans-serif;
-        font-size: 16px;
-        letter-spacing: 0;
-        color: {{ section.settings.text_color }};
-    }
-    .custom-header{
-        display: grid;
-        align-items:center;
-        grid-template-columns: repeat(3, 1fr);
-        padding: 10px 50px;
-        Background: {{ section.settings.bg_color }};
-    }
-    .custom-header__logo{justify-self: start;}
-    .custom-header__center{justify-self: center; text-align:center}
-    .custom-header__center p{margin: 0px;}
-    .custom-header__buttons{justify-self: end;}
-    .desktop-only{display:none;}
+  #shopify-section-{{ section.id }}{
+      font-family: 'Jost', sans-serif;
+      font-size: 16px;
+      letter-spacing: 0;
+      color: {{ section.settings.text_color }};
+  }
+  .custom-header{
+      display: grid;
+      align-items:center;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 10px 50px;
+      Background: {{ section.settings.bg_color }};
+  }
+  .custom-header__logo{justify-self: start;}
+  .custom-header__center{justify-self: center; text-align:center}
+  .custom-header__center p{margin: 0px;}
+  .custom-header__buttons{justify-self: end;}
+  .desktop-only{display:none;}
 
-    /* Icon Toggles */
-    .icon-close {display: none;}
-    .main-menu__disclosure[open] .icon-menu {display: none;}
-    .main-menu__disclosure[open] .icon-close {display: inline-flex;}
+  /* Icon Toggles */
+  .icon-close {display: none;}
+  .main-menu__disclosure[open] .icon-menu {display: none;}
+  .main-menu__disclosure[open] .icon-close {display: inline-flex;}
 
-    .main-menu__content {
-        position: fixed;
-        text-align: center;
-        z-index: 99;
-        top: 75px;
-        left: 0;
-        width: 100vw;
-        padding: 25px 65px;
-        Background: {{ section.settings.bg_color }};
-    }
+  .main-menu__content {
+      position: fixed;
+      text-align: center;
+      z-index: 99;
+      top: 75px;
+      left: 0;
+      width: 100vw;
+      padding: 25px 65px;
+      Background: {{ section.settings.bg_color }};
+  }
 
-    .cta {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 16px;
-        width: 220px;
-        height: 50px;
-        text-transform: uppercase;
-        text-decoration: none;
-        overflow: hidden;
-        cursor: pointer;
+  .cta {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      width: 220px;
+      height: 50px;
+      text-transform: uppercase;
+      text-decoration: none;
+      overflow: hidden;
+      cursor: pointer;
 
-        background: #FFF544;
-        color: #000;
+      background: #FFF544;
+      color: #000;
 
-        transition: color 0.3s ease;
-    }
+      transition: color 0.3s ease;
+  }
 
-    .cta::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: #000;
+  .cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #000;
 
-        transform: translateX(-100%);
-        transition: transform 0.4s ease;
-        z-index: 0;
-    }
+      transform: translateX(-100%);
+      transition: transform 0.4s ease;
+      z-index: 0;
+  }
 
-    .cta:hover::before {
-        transform: translateX(0);
-    }
+  .cta:hover::before {
+      transform: translateX(0);
+  }
 
-    .cta span {
-        position: relative;
-        z-index: 1;
-    }
+  .cta span {
+      position: relative;
+      z-index: 1;
+  }
 
-    .cta:hover {
-        color: #FFF544;
-    }
+  .cta:hover {
+      color: #FFF544;
+  }
 
-    .cta-primary{background: #FFF544; color: #000000;}
-    .cta-primary:hover{color: #ffffff;}
-    .cta-secondary{background: #000000; color: #ffffff;}
-    .cta-secondary:hover{color: #000000;}
+  .cta-primary{background: #FFF544; color: #000000;}
+  .cta-primary:hover{color: #ffffff;}
+  .cta-secondary{background: #000000; color: #ffffff;}
+  .cta-secondary:hover{color: #000000;}
 
-    /* MOBILE */
-    @media screen and (max-width: 990px){
-        .custom-header{padding: 24px 16px;}
-        .custom-header__logo{grid-columns: 2; justify-self:center;}
-    }
+  /* MOBILE */
+  @media screen and (max-width: 990px){
+      .custom-header{padding: 24px 16px;}
+      .custom-header__logo{grid-columns: 2; justify-self:center;}
+  }
 
-    /* DESKTOP */
-    @media screen and (min-width: 990px){
-        .mobile-only{
-            display:none;
-        }
-        .desktop-only{
-            display: unset; 
-        }
-    }
+  /* DESKTOP */
+  @media screen and (min-width: 990px){
+      .mobile-only{
+          display:none;
+      }
+      .desktop-only{
+          display: unset;
+      }
+  }
 {% endstyle %}
 
 <!-- Header -->
 <header class="custom-header">
+  <!-- Mobile Menu -->
+  <details class="main-menu__disclosure mobile-only">
+    <summary class="main-menu__toggle-icon">
+      <span class="icon-menu icon">{{ 'icon-menu-hamburger.svg' | inline_asset_content }}</span>
+      <span class="icon-close icon">{{ 'icon-menu-close.svg' | inline_asset_content }}</span>
+    </summary>
+    <div class="main-menu__content">
+      <p>{{ section.settings.tagline }}</p>
+      <a href="{{ section.settings.header_cta_link }}" class="cta cta-primary">
+        <span>{{ section.settings.header_cta_label | escape }}</span>
+        <span class="icon">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
+      </a>
+    </div>
+  </details>
 
-    <!-- Mobile Menu -->
-    <details class="main-menu__disclosure mobile-only">
-        <summary class="main-menu__toggle-icon">
-            <span class="icon-menu icon">{{ 'icon-menu-hamburger.svg' | inline_asset_content }}</span>
-            <span class="icon-close icon">{{ 'icon-menu-close.svg' | inline_asset_content }}</span>
-        </summary>
-        <div class="main-menu__content">
-            <p>{{ section.settings.tagline }}</p>
-             <a href="{{ section.settings.header_cta_link }}" class="cta cta-primary">
-                <span>{{ section.settings.header_cta_label | escape }}</span>
-                <span class="icon">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
-            </a>
-        </div>
-    </details>
+  <!-- Desktop Menu -->
+  <a href="{{ section.settings.logo_url }}" class="custom-header__logo">
+    {% if section.settings.logo_type == 'logo' %}
+      {{ section.settings.logo_image | image_url: width: 150 | image_tag }}
+    {% else %}
+      {{ section.settings.logo_text | escape | default: 'Logo Text' }}
+    {% endif %}
+  </a>
 
-    <!-- Desktop Menu -->
-    <a href="{{ section.settings.logo_url }}" class="custom-header__logo">
-        {% if section.settings.logo_type == "logo" %}
-            {{ section.settings.logo_image | image_url: width: 150 | image_tag  }}
-        {% else %}
-            {{ section.settings.logo_text | escape | default: "Logo Text" }}
-        {% endif %}
+  <div class="custom-header__center desktop-only">
+    {% comment %} Menu Can be here {% endcomment %}
+    <p>{{ section.settings.tagline }}</p>
+  </div>
+
+  <div class="custom-header__buttons desktop-only">
+    {% comment %} Buttons or login icons {% endcomment %}
+    <a href="{{ section.settings.header_cta_link }}" class="cta cta-primary">
+      <span>{{ section.settings.header_cta_label | escape }}</span>
+      <span class="icon">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
     </a>
-
-    <div class="custom-header__center desktop-only">
-        {% comment %} Menu Can be here {% endcomment %}
-         <p>{{ section.settings.tagline }}</p>
-    </div>
-
-    <div class="custom-header__buttons desktop-only">
-        {% comment %} Buttons or login icons {% endcomment %}
-         <a href="{{ section.settings.header_cta_link }}" class="cta cta-primary">
-            <span>{{ section.settings.header_cta_label | escape }}</span>
-            <span class="icon">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
-        </a>
-    </div>
-
+  </div>
 </header>
 
 <!-- HERO Banner -->
 <div class="custom-hero">
-    <div class="custom-hero__image-wrap">
-    {{ section.settings.desktop_image | image_url: width: 2000 | image_tag  }}
-    {{ section.settings.mobile_image | image_url: width: 800 | image_tag  }}
+  <div class="custom-hero__image-wrap">
+    {{ section.settings.desktop_image | image_url: width: 2000 | image_tag }}
+    {{ section.settings.mobile_image | image_url: width: 800 | image_tag }}
     <div class="custom-hero__overlay-content">
-        <h2>{{ section.settings.hero_heading | escape }}</h2>
-        <p>{{ section.settings.hero_description }}</p>
+      <h2>{{ section.settings.hero_heading | escape }}</h2>
+      <p>{{ section.settings.hero_description }}</p>
+      <a href="{{ section.settings.hero_cta_link }}" class="cta cta-secondary custom-hero__overlay-btn">
+        <span>{{ section.settings.hero_cta_label | escape }}</span>
+        <span class="icon">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
+      </a>
     </div>
-    </div>
-    </div>
-
+  </div>
+</div>
 
 {% schema %}
 {
-    "name": "SS Header Hero",
-    "tag": "section",
-    "class": "section cc-header-hero",
-    "presets": [{"name": "SS Header Banner", "category": "Ecommexperts Hiring Test"}],
-    "settings": [
-        {"type": "header", "content": "Top bar"},
-        {
-            "type": "select", "label": "Logo type", "id": "logo_type",
-            "options": [{"label": "Logo", "value": "logo"}, {"label": "Text", "value": "text"}],
-            "default": "logo"
-        },
-        {"type": "image_picker", "label": "Logo image", "id": "logo_image", "visible_if": "{{ section.settings.logo_type == 'logo' }}"},
-        {"type": "text", "label": "Logo text", "id": "logo_text", "visible_if": "{{ section.settings.logo_type == 'text' }}", "default": "Tisso Vision"},
-        {"type": "url", "label": "Logo link", "id": "logo_url"},
-        {"type": "text", "label": "Center tagline", "id": "tagline", "default": "Find the ideal gift for your loved ones."},
-        {"type": "text", "label": "Button label", "id": "header_cta_label", "default": "Choose Gift"},
-        {"type": "url", "label": "Button link", "id": "header_cta_link"},
+  "name": "SS Header Hero",
+  "tag": "section",
+  "class": "section cc-header-hero",
+  "presets": [{ "name": "SS Header Banner", "category": "Ecommexperts Hiring Test" }],
+  "settings": [
+    { "type": "header", "content": "Top bar" },
+    {
+      "type": "select",
+      "label": "Logo type",
+      "id": "logo_type",
+      "options": [
+        { "label": "Logo", "value": "logo" },
+        { "label": "Text", "value": "text" }
+      ],
+      "default": "logo"
+    },
+    {
+      "type": "image_picker",
+      "label": "Logo image",
+      "id": "logo_image",
+      "visible_if": "{{ section.settings.logo_type == 'logo' }}"
+    },
+    {
+      "type": "text",
+      "label": "Logo text",
+      "id": "logo_text",
+      "visible_if": "{{ section.settings.logo_type == 'text' }}",
+      "default": "Tisso Vision"
+    },
+    { "type": "url", "label": "Logo link", "id": "logo_url" },
+    {
+      "type": "text",
+      "label": "Center tagline",
+      "id": "tagline",
+      "default": "Find the ideal gift for your loved ones."
+    },
+    { "type": "text", "label": "Button label", "id": "header_cta_label", "default": "Choose Gift" },
+    { "type": "url", "label": "Button link", "id": "header_cta_link" },
 
-        {"type": "header", "content": "Hero image/content"},
-        {"type": "image_picker", "label": "Desktop Image", "id": "desktop_image"},
-        {"type": "image_picker", "label": "Mobile Image", "id": "mobile_image"},
+    { "type": "header", "content": "Hero image/content" },
+    { "type": "image_picker", "label": "Desktop Image", "id": "desktop_image" },
+    { "type": "image_picker", "label": "Mobile Image", "id": "mobile_image" },
 
-        {"type": "paragraph", "content": "Overlay content for hero"},
-        {"type": "text", "label": "Heading", "id": "hero_heading", "default": "The Gift Guide"},
-        {"type": "textarea", "label": "Description", "id": "hero_description", "default": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season."},
-        {"type": "text", "label": "Button label", "id": "hero_cta_label", "default": "Shop Now"},
-        {"type": "url", "label": "Button link", "id": "hero_cta_link"},
+    { "type": "paragraph", "content": "Overlay content for hero" },
+    { "type": "text", "label": "Heading", "id": "hero_heading", "default": "The Gift Guide" },
+    {
+      "type": "textarea",
+      "label": "Description",
+      "id": "hero_description",
+      "default": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season."
+    },
+    { "type": "text", "label": "Button label", "id": "hero_cta_label", "default": "Shop Now" },
+    { "type": "url", "label": "Button link", "id": "hero_cta_link" },
 
-        {"type": "header", "content": "Footer strip"},
-        {"type": "textarea", "label": "Strip text", "id": "footer_text", "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"},
+    { "type": "header", "content": "Footer strip" },
+    {
+      "type": "textarea",
+      "label": "Strip text",
+      "id": "footer_text",
+      "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+    },
 
-
-        {"type": "header", "content": "Colors"},
-        {"type": "color", "label": "Text color", "id": "text_color", "default": "#000000"},
-        {"type": "color", "label": "Background color", "id": "bg_color", "default": "#F5F5F5"},
-        
-    ]
-
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "label": "Text color", "id": "text_color", "default": "#000000" },
+    { "type": "color", "label": "Background color", "id": "bg_color", "default": "#F5F5F5" }
+  ]
 }
 {% endschema %}
