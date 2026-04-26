@@ -103,6 +103,32 @@
   gap: 16px;
 }
 
+.custom-hero__overlay-content{
+    max-width: 480px
+}
+
+.custom-hero__overlay-content h2{
+    font-family: 'Jost', sans-serif;
+    font-size: 70px;
+    letter-spacing: 0px;
+    line-height: 1;
+    color: {{ section.settings.text_color }};
+    margin: 0px;
+}
+
+.custom-hero__overlay-content p{
+    margin: 0px;
+}
+
+.custom-footer-strip {
+    padding: 10px 16px;
+    background: #f5f5f5;
+    text-align:center;
+    
+    
+}
+
+
 /* MOBILE */
 @media screen and (max-width: 990px) {
   .custom-header {
@@ -124,6 +150,8 @@
     left: 50%;
     transform: translateX(-50%);
   }
+
+    .custom-hero__overlay-content h2{font-size: 30px}
 }
 
 /* DESKTOP */
@@ -146,6 +174,11 @@
     left: 50px;
   }
 }
+
+.custom-footer-strip p{
+    margin: 0;
+}
+
 {% endstyle %}
 
 <!-- Header -->
