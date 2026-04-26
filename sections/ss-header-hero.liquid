@@ -153,8 +153,8 @@
 <!-- HERO Banner -->
 <div class="custom-hero">
   <div class="custom-hero__image-wrap">
-    {{ section.settings.desktop_image | image_url: width: 2000 | image_tag }}
-    {{ section.settings.mobile_image | image_url: width: 800 | image_tag }}
+    {{ section.settings.desktop_image | image_url: width: 2000 | image_tag: class: "custom-hero__desktop-image" }}
+    {{ section.settings.mobile_image | image_url: width: 800 | image_tag: class: "custom-hero__mobile-image" }}
     <div class="custom-hero__overlay-content">
       <h2>{{ section.settings.hero_heading | escape }}</h2>
       <p>{{ section.settings.hero_description }}</p>
