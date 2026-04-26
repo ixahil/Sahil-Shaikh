@@ -10,9 +10,9 @@
         color: {{ section.settings.text_color }};
     }
     .custom-header{
-        display: flex;
+        display: grid;
         align-items:center;
-        justify-content: space-between;
+        grid-template-columns: repeat(3, 1fr);
         padding: 10px 50px;
         Background: {{ section.settings.bg_color }};
     }
