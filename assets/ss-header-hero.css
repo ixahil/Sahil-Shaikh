@@ -126,8 +126,9 @@
     .custom-hero__desktop-image{display:none;}
 
     .custom-hero__mobile-image{
-        height: 500px;
+        height: 100%;
         object-position: center;
+        aspect-ratio: 3/2;
     }
 
     .custom-hero__overlay-content{
