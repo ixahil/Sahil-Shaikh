@@ -79,15 +79,15 @@
     </div>
     {{
       section.settings.desktop_image
+      | default: 'blog-apparel-2'
       | image_url: width: 2000
       | image_tag: class: 'custom-hero__desktop-image'
-      | default: 'blog-apparel-2'
     }}
     {{
       section.settings.mobile_image
+      | default: 'blog-apparel-2'
       | image_url: width: 800
       | image_tag: class: 'custom-hero__mobile-image'
-      | default: 'blog-apparel-2'
     }}
   </div>
 </div>
