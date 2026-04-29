@@ -21,7 +21,7 @@
           {% if block.settings.product != blank %}
             {% assign product = block.settings.product %}
             <div class="hotspot-collection-grid__media-wrapper">
-              {{ product.featured_image | image_url: width: 433  }}
+              {{ product.featured_image | image_url: width: 433 | image_tag  }}
               <button data-hotspot-tracker class="hotspot-collection-grid__tracker" style="top: {{ block.settings.top }}%; left: {{ block.settings.left }}%">
                 {{ "icon-hotspot.svg" | inline_asset_content }}
               </button>
