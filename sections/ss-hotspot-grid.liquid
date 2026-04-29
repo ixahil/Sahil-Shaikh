@@ -103,6 +103,7 @@
           try{
             const res = await fetch(uri); 
             if (!res.ok) this.handleError();
+            const data = await res.json();
 
             const quickViewMarkup = data['ss-quick-view'];
 
