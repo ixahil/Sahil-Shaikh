@@ -10,8 +10,6 @@
   endif
 %}
 
-
-
 <div class="quick-view-dialog__content">
   <div class="quick-view-dialog__product-info">
     <div class="quick-view-dialog__image">
@@ -50,4 +48,6 @@
       {%- endif -%}
     </div>
   </div>
+
+  {% render 'ss-variant-picker', product: product, variant: variant %}
 </div>
