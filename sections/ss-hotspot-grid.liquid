@@ -79,6 +79,8 @@
         this.btns.forEach((btn) => {
           btn.addEventListener('click', this.open.bind(this, btn));
         });
+
+        this.closeDialog.addEventListener("click", this.close.bind(this));
       }
 
       open() {
