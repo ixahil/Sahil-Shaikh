@@ -38,6 +38,15 @@
 
 .quick-view-dialog__close svg{
     display: block;
+    width: 12px;
+    height: 12px;
+}
+
+.quick-view-dialog__close{
+    border: 0;
+    background: none;
+    padding: 0px;
+    margin: 0px;
 }
 
 /* Tablet */
