@@ -16,7 +16,6 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  border-radius: 12px;
 }
 
 .hotspot-collection-grid__media-wrapper img {
@@ -47,7 +46,7 @@
 /* Mobile */
 @media (max-width: 600px) {
   .hotspot-collection-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
   }
 
