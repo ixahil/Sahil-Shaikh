@@ -103,13 +103,16 @@
           try{
             const res = await fetch(uri); 
             if (!res.ok) this.handleError();
+
             const data = await res.json();
 
             const quickViewMarkup = data['ss-quick-view'];
 
             if (quickViewMarkup) {
-              this.dialog.querySelector('.quick-view-dialog__content').innerHTML = quickViewMarkup;
+              const html = document.createElement("div");
+              this.dialog.querySelector('.quick-view-dialog__content').innerHTML = html.querySelector(".quick-view-dialog__content").innerHTML;
             }
+
           }catch(e){
             console.error("something wrong with quickview", e)
           }
