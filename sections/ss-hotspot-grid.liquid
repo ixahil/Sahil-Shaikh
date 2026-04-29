@@ -60,8 +60,10 @@
 
   <dialog class="quick-view-dialog" id="quick-view-dialog-{{ section.id }}" aria-label="View Product" aria-modal="true">
     <button class="quick-view-dialog__close">{{ 'icon-close.svg' | inline_asset_content }}</button>
-    <div class="loading__spinner">
-      {{ 'loading-spinner.svg' | inline_asset_content }}
+    <div class="quick-view-dialog__content">
+       <div class="loading__spinner hidden">
+        {{ 'loading-spinner.svg' | inline_asset_content }}
+      </div>
     </div>
   </dialog>
 </hotspot-grid>
