@@ -104,7 +104,7 @@
             const res = await fetch(uri); 
             if (!res.ok) this.handleError();
 
-            const text = await response.text();
+            const text = await res.text();
             const html = new DOMParser().parseFromString(text, 'text/html');
 
             const newContent = html.querySelector('.quick-view-dialog__content');
