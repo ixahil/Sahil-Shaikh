@@ -39,6 +39,7 @@
                 data-hotspot-tracker
                 class="hotspot-collection-grid__tracker"
                 style="top: {{ block.settings.top }}%; left: {{ block.settings.left }}%"
+                data-handle="{{ product.handle }}"
               >
                 {{ 'icon-hotspot.svg' | inline_asset_content }}
               </button>
@@ -89,12 +90,18 @@
           this.closeDialog.addEventListener('click', this.close.bind(this));
         }
 
-        open() {
+        async open(btn) {
           this.dialog.showModal();
+          console.log(btn);
+          {% comment %} const quickViewMarkup = await this.getMarkup() {% endcomment %}
         }
 
         close() {
           this.dialog.close();
+        }
+
+        async getMarkup(){
+          {% comment %} const handle =  {% endcomment %}
         }
       }
     );
