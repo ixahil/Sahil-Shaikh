@@ -92,7 +92,7 @@
 
         async open(btn) {
           this.dialog.showModal();
-          const quickViewMarkup = await this.getMarkup(`/products/${btn.dataset.handle}?sections=ss-quick-view`);
+          await this.getMarkup(`/products/${btn.dataset.handle}?sections=ss-quick-view`);
         }
 
         close() {
