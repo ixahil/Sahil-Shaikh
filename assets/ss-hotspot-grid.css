@@ -17,8 +17,11 @@
 }
 
 .hotspot-collection-grid__item{
-    position: relative;
     min-height: 444px;
+}
+
+.hotspot-collection-grid__media-wrapper{
+    position: relative;
 }
 
 .hotspot-collection-grid__media-wrapper img{
