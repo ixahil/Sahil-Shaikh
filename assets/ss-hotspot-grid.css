@@ -41,16 +41,20 @@
   .hotspot-collection-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
 }
 
 /* Mobile */
 @media (max-width: 600px) {
-  .hotspot-collection-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.5rem;
-  }
-
-  .hotspot-collection-grid__media-wrapper img {
-    aspect-ratio: 1 / 1; 
-  }
+    .hotspot-collection-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.5rem;
+    }
+    .hotspot-collection-grid__media-wrapper img {
+        aspect-ratio: 1 / 1; 
+    }
+    button.hotspot-collection-grid__tracker svg {
+        width: 15.75px;
+        height: 15.75px;
+    }
 }
