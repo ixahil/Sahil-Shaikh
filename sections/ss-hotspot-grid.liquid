@@ -110,6 +110,7 @@
 
             if (quickViewMarkup) {
               const html = document.createElement("div");
+              html.innerHtml = quickViewMarkup;
               this.dialog.querySelector('.quick-view-dialog__content').innerHTML = html.querySelector(".quick-view-dialog__content").innerHTML;
             }
 
