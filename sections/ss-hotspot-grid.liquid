@@ -102,10 +102,23 @@
         async getMarkup(uri){
           try{
             const res = await fetch(uri); 
-            console.log(res)
+            if (!res.ok) this.handleError();
+
+            const text = await response.text();
+            const html = new DOMParser().parseFromString(text, 'text/html');
+
+            const newContent = html.querySelector('.quick-view-dialog__content');
+            if (newContent) {
+              this.dialog.querySelector('.quick-view-dialog__content').innerHTML = newContent.innerHTML;
+            }
           }catch(e){
             console.error("something wrong with quickview", e)
           }
+        }
+
+        handleError(e){
+          this.close();
+          console.error("something wrong with quickview", e)
         }
       }
     );
