@@ -38,20 +38,10 @@
         "text_color": "#000000",
         "bg_color": "#f5f5f5"
       }
-    },
-    "ss_hotspot_grid_JazU6i": {
-      "type": "ss-hotspot-grid",
-      "name": "SS Hotspot Grid",
-      "settings": {
-        "heading": "Tisso vison in the wild",
-        "sub_heading": "",
-        "heading_align": "start"
-      }
     }
   },
   "order": [
     "main",
-    "ss_header_hero_CjJGxm",
-    "ss_hotspot_grid_JazU6i"
+    "ss_header_hero_CjJGxm"
   ]
 }
