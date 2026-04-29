@@ -24,7 +24,7 @@
 }
 
 .hotspot-collection-grid__media-wrapper img{
-    width: 433px;
+    width: 100%;
     height: 444px;
     object-fit: cover;
     object-position: center center;
