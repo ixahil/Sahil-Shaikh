@@ -36,6 +36,10 @@
   padding: 0;
 }
 
+.quick-view-dialog__close svg{
+    display: block;
+}
+
 /* Tablet */
 @media (max-width: 990px) {
   .hotspot-collection-grid {
