@@ -45,7 +45,7 @@
         "item_ptYHPU": {
           "type": "item",
           "settings": {
-            "product": "",
+            "product": "black-leather-bag",
             "top": 100,
             "left": 79
           }
@@ -53,7 +53,15 @@
         "item_penLQY": {
           "type": "item",
           "settings": {
-            "product": "",
+            "product": "blue-silk-tuxedo",
+            "top": 50,
+            "left": 50
+          }
+        },
+        "item_ccgm8V": {
+          "type": "item",
+          "settings": {
+            "product": "chequered-red-shirt",
             "top": 50,
             "left": 50
           }
@@ -70,6 +78,7 @@
       "block_order": [
         "item_ptYHPU",
         "item_penLQY",
+        "item_ccgm8V",
         "item_yaPVjK"
       ],
       "name": "SS Hotspot Grid",
