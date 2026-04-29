@@ -92,16 +92,20 @@
 
         async open(btn) {
           this.dialog.showModal();
-          console.log(btn);
-          {% comment %} const quickViewMarkup = await this.getMarkup() {% endcomment %}
+          const quickViewMarkup = await this.getMarkup(`/products/${btn.dataset.handle}?sections=ss-quick-view`);
         }
 
         close() {
           this.dialog.close();
         }
 
-        async getMarkup(){
-          {% comment %} const handle =  {% endcomment %}
+        async getMarkup(uri){
+          try{
+            const res = await fetch(uri); 
+            console.log(res)
+          }catch(e){
+            console.error("something wrong with quickview", e)
+          }
         }
       }
     );
