@@ -59,8 +59,10 @@
   </div>
 
   <dialog class="quick-view-dialog" id="quick-view-dialog-{{ section.id }}" aria-label="View Product" aria-modal="true">
-    <button class="close-dialog">{{ 'icon-close.svg' | inline_asset_content }}</button>
-    <div class="dialog-content"></div>
+    <button class="quick-view-dialog__close">{{ 'icon-close.svg' | inline_asset_content }}</button>
+    <div class="quick-view-dialog__content">
+      
+    </div>
   </dialog>
 </hotspot-grid>
 
@@ -74,9 +76,7 @@
 
           this.dialog = this.querySelector('dialog');
           this.btns = this.querySelectorAll('.hotspot-collection-grid__tracker');
-          this.closeDialog = this.querySelector('.dialog-content');
-
-          console.log(this);
+          this.closeDialog = this.querySelector('.quick-view-dialog__close');
         }
 
         connectedCallback() {
