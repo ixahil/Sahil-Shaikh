@@ -1,0 +1,41 @@
+<hotspot-grid>
+
+    </hotspot-grid>
+
+
+{% schema %}
+{
+  "name": "SS Hotspot Grid",
+  "tag": "section",
+  "class": "section cc-hotspot-grid",
+  "presets": [{ "name": "SS Hotspot Grid", "category": "Ecommexperts Hiring Test" }],
+  "settings": [
+    { "type": "header", "content": "Header" },
+    {"type": "text", "label": "Heading", "id": "heading", "default": "Tisso vison in the wild"},
+    {"type": "textarea", "label": "Sub heading", "id": "sub_heading"},
+    {
+      "type": "select",
+      "label": "Heading alignment",
+      "id": "heading_align",
+      "options": [
+        { "label": "Left", "value": "start" },
+        { "label": "Center", "value": "center" },
+        { "label": "Right", "value": "end" },
+      ],
+      "default": "start"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Product",
+      "settings": [
+        {"type": "product", "id": "product", "label": "Select product"},
+        {"type": "header", "content": "Hotspot position"},
+        {"type": "range", "id": "top", "label": "Vertical position (%)", "min": 0, "max": 0, "step": 1, "default": 50, "unit": "%"},
+        {"type": "range", "id": "left", "label": "Horizontal position (%)", "min": 0, "max": 0, "step": 1, "default": 50, "unit": "%"},
+      ]
+    }
+  ]
+}
+{% endschema %}
