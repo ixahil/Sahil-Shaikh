@@ -109,9 +109,15 @@
             const quickViewMarkup = data['ss-quick-view'];
 
             if (quickViewMarkup) {
-              const html = document.createElement("div");
-              html.innerHtml = quickViewMarkup;
-              this.dialog.querySelector('.quick-view-dialog__content').innerHTML = html.querySelector(".quick-view-dialog__content").innerHTML;
+              const tempDiv = document.createElement("div");
+              tempDiv.innerHTML = quickViewMarkup;
+
+              const targetContent = tempDiv.querySelector(".quick-view-dialog__content");
+              
+              if (targetContent) {
+                this.dialog.querySelector('.quick-view-dialog__content').innerHTML = targetContent.innerHTML;
+              }
+              
             }
 
           }catch(e){
