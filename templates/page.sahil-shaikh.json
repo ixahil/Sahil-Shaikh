@@ -38,10 +38,33 @@
         "text_color": "#000000",
         "bg_color": "#f5f5f5"
       }
+    },
+    "ss_hotspot_grid_FgBWzb": {
+      "type": "ss-hotspot-grid",
+      "blocks": {
+        "item_M6jhEW": {
+          "type": "item",
+          "settings": {
+            "product": "",
+            "top": 50,
+            "left": 50
+          }
+        }
+      },
+      "block_order": [
+        "item_M6jhEW"
+      ],
+      "name": "SS Hotspot Grid",
+      "settings": {
+        "heading": "Tisso vison in the wild",
+        "sub_heading": "",
+        "heading_align": "start"
+      }
     }
   },
   "order": [
     "main",
-    "ss_header_hero_CjJGxm"
+    "ss_header_hero_CjJGxm",
+    "ss_hotspot_grid_FgBWzb"
   ]
 }
