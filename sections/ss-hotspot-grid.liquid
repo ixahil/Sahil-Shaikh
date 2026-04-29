@@ -1,9 +1,64 @@
 <hotspot-grid>
+  <div class="page-width">
+    {% if section.settings.heading != blank and section.settings.sub_heading != blank %}
+      <div class="collection__title title-wrapper align-{{ section.settings.heading_align }}">
+        {% if section.settings.heading != blank %}
+          <h2 class="title h2">{{ section.settings.heading | escape }}</h2>
+        {% endif %}
 
+        {% if section.settings.sub_heading != blank %}
+          <p>{{ section.settings.sub_heading }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="hotspot-collection-grid">
+      {% for block in section.blocks %}
+        <div class="hotspot-collection-grid__item" data-index="{{ forloop.index }}" {{ block.shopify_attributes }}>
+          {% if block.settings.product != blank %}
+          {% else %}
+            <div class="hotspot-collection-grid__media-wrapper">
+              {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <dialog class="quick-view-dialog" id="quick-view-dialog-{{ section.id }}" aria-label="View Product" aria-modal="true">
+    <button class="close-dialog">{{ "icon-close.svg" | inline_asset_content }}</button>
+    <div class="dialog-content"></div>
+  </dialog>
 </hotspot-grid>
 
+<script>
+  if (!customElements.get('hotspot-grid')) {
+    class HotspotGrid extends HTMLElement {
+      constructor() {
+        super();
 
+        this.dialog = this.querySelector('dialog');
+        this.btns = '';
+        this.closeDialog = this.querySelector('.dialog-content');
+      }
 
+      connectedCallback() {
+        this.btns.forEach((btn) => {
+          btn.addEventListener('click', this.open.bind(this, btn));
+        });
+      }
+
+      open() {
+        this.dialog.showModal();
+      }
+
+      close() {
+        this.dialog.close();
+      }
+    }
+  }
+</script>
 
 {% schema %}
 {
@@ -11,11 +66,16 @@
   "tag": "section",
   "class": "section cc-hotspot-grid",
   "presets": [
-    { "name": "SS Hotspot Grid", "category": "Ecommexperts Hiring Test", "blocks": [{"type": "item"}, {"type": "item"}, {"type": "item"}] }],
+    {
+      "name": "SS Hotspot Grid",
+      "category": "Ecommexperts Hiring Test",
+      "blocks": [{ "type": "item" }, { "type": "item" }, { "type": "item" }]
+    }
+  ],
   "settings": [
     { "type": "header", "content": "Header" },
-    {"type": "text", "label": "Heading", "id": "heading", "default": "Tisso vison in the wild"},
-    {"type": "textarea", "label": "Sub heading", "id": "sub_heading"},
+    { "type": "text", "label": "Heading", "id": "heading", "default": "Tisso vison in the wild" },
+    { "type": "textarea", "label": "Sub heading", "id": "sub_heading" },
     {
       "type": "select",
       "label": "Heading alignment",
@@ -23,10 +83,10 @@
       "options": [
         { "label": "Left", "value": "start" },
         { "label": "Center", "value": "center" },
-        { "label": "Right", "value": "end" },
+        { "label": "Right", "value": "end" }
       ],
       "default": "start"
-    },
+    }
   ],
   "blocks": [
     {
@@ -34,10 +94,28 @@
       "name": "Product",
       "limit": 6,
       "settings": [
-        {"type": "product", "id": "product", "label": "Select product"},
-        {"type": "header", "content": "Hotspot position"},
-        {"type": "range", "id": "top", "label": "Vertical position", "min": 0, "max": 100, "step": 1, "default": 50, "unit": "%"},
-        {"type": "range", "id": "left", "label": "Horizontal position", "min": 0, "max": 100, "step": 1, "default": 50, "unit": "%"},
+        { "type": "product", "id": "product", "label": "Select product" },
+        { "type": "header", "content": "Hotspot position" },
+        {
+          "type": "range",
+          "id": "top",
+          "label": "Vertical position",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50,
+          "unit": "%"
+        },
+        {
+          "type": "range",
+          "id": "left",
+          "label": "Horizontal position",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50,
+          "unit": "%"
+        }
       ]
     }
   ]
