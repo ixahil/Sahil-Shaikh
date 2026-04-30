@@ -91,7 +91,7 @@
 }
 
 
-.custom-hero__overlay-content h2{
+.custom-hero__content h2{
     font-family:'Jost', sans-serif;
     font-size: clamp(30px, 4vw, 70px);
     line-height:1;
@@ -101,7 +101,7 @@
     margin:0;
 }
 
-.custom-hero__overlay-content p{margin:0;}
+.custom-hero__content p{margin:0; font-weight:400; font-size: clamp(16px, 1.5vw, 20px);line-height: 1.4;letter-spacing:0;}
 .custom-hero__content{
     max-width: 483px;
     display: flex;
