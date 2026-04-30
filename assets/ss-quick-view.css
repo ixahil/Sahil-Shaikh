@@ -72,7 +72,7 @@
 
 .quick-view-dialog__product-info .product__description {
   font-family: 'Jost', sans-serif;
-  font-size: 14px;
+  font-size: clamp(12px, 4vw, 14px);
   font-weight: 300;
   margin: 0 0 12px;
   line-height: 1.1;
