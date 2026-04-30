@@ -1,3 +1,4 @@
+.custom-page-width{max-width: var(--page-width); margin: 0 auto; padding: 10px 50px;}
 .align-start { text-align: left; }
 .align-center { text-align: center; }
 .align-end { text-align: right; }
@@ -7,6 +8,15 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(1rem, 2vw, 2rem);
 }
+
+.collection__title .title{
+  font-family: "Lustria", sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
 
 .hotspot-collection-grid__item {
   width: 100%;
