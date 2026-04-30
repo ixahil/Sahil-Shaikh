@@ -127,6 +127,7 @@
         left:50%;
         transform:translateX(-50%);
     }
+    .custom-hero__overlay-content{position: absolute; bottom: 0; left: 0; right:0; padding: 0 50px 5% 50px;}
 
 }
     
