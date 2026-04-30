@@ -116,15 +116,7 @@
             const quickViewMarkup = data['ss-quick-view'];
 
             if (quickViewMarkup) {
-              const tempDiv = document.createElement("div");
-              tempDiv.innerHTML = quickViewMarkup;
-
-              const targetContent = tempDiv.querySelector(".quick-view-dialog__content");
-              
-              if (targetContent) {
-                this.dialog.querySelector('.quick-view-dialog__content').innerHTML = targetContent.innerHTML;
-              }
-              
+                this.dialog.querySelector('.quick-view-dialog__content').innerHTML = quickViewMarkup;
             }
 
           }catch(e){
