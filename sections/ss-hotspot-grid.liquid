@@ -109,7 +109,7 @@
 
         close() {
           this.dialog.close();
-          this.loader.style = 'display:block';
+          this.loader.style.display = 'block';
           this.quickview.replaceChildren();
         }
 
@@ -123,8 +123,8 @@
             const quickViewMarkup = data['ss-quick-view'];
 
             if (quickViewMarkup) {
-              this.dialog.querySelector('.quick-view-dialog__content .quick-view').innerHTML = quickViewMarkup;
-              this.loader.style = 'display:none';
+              this.quickview.innerHTML = quickViewMarkup;
+              this.loader.style.display = 'none';
             }
           } catch (e) {
             console.error('something wrong with quickview', e);
@@ -134,6 +134,7 @@
         handleError(e) {
           this.close();
           console.error('something wrong with quickview', e);
+          throw e;
         }
       }
     );
