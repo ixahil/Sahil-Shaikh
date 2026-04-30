@@ -120,7 +120,7 @@
 @media screen and (max-width: 990px){
     .custom-page-width{padding:24px 16px;}    
     .custom-header__logo{width:100%;text-align:center;}
-    .custom-header__container{justify-content: start; align-items: end;}
+    .custom-header__container{justify-content: start; align-items: end;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;}
     .summary.main-menu__toggle-icon{padding-bottom: 2px;}
     .custom-hero__content{align-items: center;text-align: center;padding-top:50px;gap:24px}
     .custom-hero__overlay-btn{
