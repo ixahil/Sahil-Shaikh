@@ -69,18 +69,19 @@
   <div class="custom-hero__image-wrap">
     <div class="custom-hero__overlay-content custom-page-width">
       <div class="custom-hero__content">
-      {% if section.settings.hero_heading != blank %}
-        <h2>{{ section.settings.hero_heading | escape }}</h2>
-      {% endif %}
-      {% if section.settings.hero_description != blank %}
-        <p>{{ section.settings.hero_description }}</p>
-      {% endif %}
-      {% if section.settings.hero_cta_label != blank %}
-        <a href="{{ section.settings.hero_cta_link }}" class="cta cta-secondary custom-hero__overlay-btn">
-          <span>{{ section.settings.hero_cta_label | escape }}</span>
-          <span class="icon">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
-        </a>
-      {% endif %}
+        {% if section.settings.hero_heading != blank %}
+          <h2>{{ section.settings.hero_heading | escape }}</h2>
+        {% endif %}
+        {% if section.settings.hero_description != blank %}
+          <p>{{ section.settings.hero_description }}</p>
+        {% endif %}
+        {% if section.settings.hero_cta_label != blank %}
+          <a href="{{ section.settings.hero_cta_link }}" class="cta cta-secondary custom-hero__overlay-btn">
+            <span>{{ section.settings.hero_cta_label | escape }}</span>
+            <span class="icon">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
+          </a>
+        {% endif %}
+      </div>
     </div>
     {% if section.settings.desktop_image != blank %}
       <div class="custom-hero__desktop-image">
