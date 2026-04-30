@@ -89,6 +89,7 @@
           this.btns = this.querySelectorAll('.hotspot-collection-grid__tracker');
           this.closeDialog = this.querySelector('.quick-view-dialog__close');
           this.loader = this.querySelector(".quick-view-dialog__content__loading__spinner")
+          this.quickview = this.querySelector(".quick-view-dialog__content .quick-view");
         }
 
         connectedCallback() {
@@ -106,7 +107,8 @@
 
         close() {
           this.dialog.close();
-          this.loader.style = "display:block"
+          this.loader.style = "display:block";
+          this.quickview.replaceChildren();
         }
 
         async getMarkup(uri){
