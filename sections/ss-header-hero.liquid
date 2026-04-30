@@ -18,6 +18,7 @@
 
 <!-- Header -->
 <header class="custom-header">
+  <div class="custom-header__container">
   <!-- Mobile Menu -->
   <details class="main-menu__disclosure mobile-only">
     <summary class="main-menu__toggle-icon">
@@ -33,7 +34,6 @@
     </div>
   </details>
 
-  <div class="page-width">
     <!-- Desktop Menu -->
     <a href="{{ section.settings.logo_url }}" class="custom-header__logo">
       {% if section.settings.logo_type == 'logo' and section.settings.logo_image != blank %}
