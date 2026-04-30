@@ -32,7 +32,7 @@
     justify-content: center;
     gap: 18px;
     width: 207px;
-    height: 44px;
+    height: 44p x;
     text-transform: uppercase;
     text-decoration: none;
     overflow: hidden;
@@ -90,14 +90,6 @@
     display: block;
 }
 
-/* .custom-hero__overlay-content{
-    display:flex;
-    flex-direction: column;
-    gap:36px;
-    max-width:540px;
-    padding:16px 24px;
-    z-index:2;
-} */
 
 .custom-hero__overlay-content h2{
     font-family:'Jost', sans-serif;
