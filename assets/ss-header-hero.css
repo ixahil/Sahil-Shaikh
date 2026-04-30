@@ -111,8 +111,10 @@
 }
 
 .custom-footer-strip p{margin:0;}
-/* 
 @media screen and (max-width: 990px){
+    .custom-page-width{padding:24px 0;}    
+}
+    /* 
     .custom-header{padding:24px 16px;}
     .custom-hero{padding-top:50px;}
 
