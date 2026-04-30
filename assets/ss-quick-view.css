@@ -3,6 +3,8 @@
     max-height: 447px;
     max-width: 311px;
     padding: 36px 20px 20px 20px;
+    height: 100%;
+    width: 100%;
 }
 
 .quick-view-dialog__content__loading__spinner{
