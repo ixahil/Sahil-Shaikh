@@ -17,7 +17,7 @@
 {% endstyle %}
 
 <!-- Header -->
-<header class="custom-header page-width">
+<header class="custom-header">
   <!-- Mobile Menu -->
   <details class="main-menu__disclosure mobile-only">
     <summary class="main-menu__toggle-icon">
@@ -33,31 +33,33 @@
     </div>
   </details>
 
-  <!-- Desktop Menu -->
-  <a href="{{ section.settings.logo_url }}" class="custom-header__logo">
-    {% if section.settings.logo_type == 'logo' and section.settings.logo_image != blank  %}
-      {{ section.settings.logo_image | image_url: width: 150 | image_tag }}
-    {% else %}
-      {{ section.settings.logo_text | escape | default: 'Logo Text' }}
-    {% endif %}
-  </a>
-  {% if section.settings.tagline %}
-    <div class="custom-header__center desktop-only">
-      {% comment %} Menu Can be here {% endcomment %}
-      <p>{{ section.settings.tagline }}</p>
-    </div>
-  {% endif %}
-  {% if section.settings.header_cta_label %}
-    <div class="custom-header__buttons desktop-only">
-      {% comment %} Buttons or login icons {% endcomment %}
-      {% if section.settings.header_cta_label != blank %}
-        <a href="{{ section.settings.header_cta_link }}" class="cta cta-primary">
-          <span>{{ section.settings.header_cta_label | escape }}</span>
-          <span class="icon">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
-        </a>
+  <div class="page-width">
+    <!-- Desktop Menu -->
+    <a href="{{ section.settings.logo_url }}" class="custom-header__logo">
+      {% if section.settings.logo_type == 'logo' and section.settings.logo_image != blank %}
+        {{ section.settings.logo_image | image_url: width: 150 | image_tag }}
+      {% else %}
+        {{ section.settings.logo_text | escape | default: 'Logo Text' }}
       {% endif %}
-    </div>
-  {% endif %}
+    </a>
+    {% if section.settings.tagline %}
+      <div class="custom-header__center desktop-only">
+        {% comment %} Menu Can be here {% endcomment %}
+        <p>{{ section.settings.tagline }}</p>
+      </div>
+    {% endif %}
+    {% if section.settings.header_cta_label %}
+      <div class="custom-header__buttons desktop-only">
+        {% comment %} Buttons or login icons {% endcomment %}
+        {% if section.settings.header_cta_label != blank %}
+          <a href="{{ section.settings.header_cta_link }}" class="cta cta-primary">
+            <span>{{ section.settings.header_cta_label | escape }}</span>
+            <span class="icon">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
 </header>
 
 <!-- HERO Banner -->
