@@ -103,6 +103,12 @@
 }
 
 .custom-hero__overlay-content p{margin:0;}
+.custom-hero__content{
+    max-width: 483px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
 
 .custom-footer-strip{
     padding:10px 16px;
