@@ -12,6 +12,7 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(1rem, 2vw, 2rem);
 }
+.collection__title{margin-bottom: 20px;}
 
 .collection__title .title{
   font-family: "Lustria", serif;
