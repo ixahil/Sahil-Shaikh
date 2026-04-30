@@ -13,7 +13,7 @@
 }
 
 
-.loading__spinner {
+.custom-loading__spinner {
   width: 100%;
   height: 100%;
   display: flex;
