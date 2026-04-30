@@ -64,24 +64,24 @@
 
 .quick-view-dialog__product-info .product__title {
   font-family: 'Jost', sans-serif;
-  font-size: 1.6rem;
+  font-size: 16px;
   font-weight: 300;
   margin: 0 0 12px;
-  line-height: 1;
+  line-height: 1.2;
 }
 
 .quick-view-dialog__product-info .product__description {
   font-family: 'Jost', sans-serif;
-  font-size: 1.6rem;
+  font-size: 14px;
   font-weight: 300;
   margin: 0 0 12px;
-  line-height: 1;
+  line-height: 1.1;
 }
 
 .quick-view-dialog__product-info .price__sale {
   font-family: 'Lustria', serif; 
-  font-size: 1.6rem;
+  font-size: 16px;
   font-weight: normal;
   margin: 0 0 12px;
-  line-height: 1;
+  line-height: 1.2;
 }
