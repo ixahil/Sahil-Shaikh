@@ -53,16 +53,9 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-}
+  button.hotspot-collection-grid__tracker svg {
+    width: 15.75px;
+    height: 15.75px;
+  }
 
-/* Mobile */
-@media (max-width: 600px) {
-    .hotspot-collection-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.5rem;
-    }
-    button.hotspot-collection-grid__tracker svg {
-        width: 15.75px;
-        height: 15.75px;
-    }
 }
