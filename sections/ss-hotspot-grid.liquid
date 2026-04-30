@@ -69,6 +69,7 @@
   <dialog class="quick-view-dialog" id="quick-view-dialog-{{ section.id }}" aria-label="View Product" aria-modal="true">
     <button class="quick-view-dialog__close">{{ 'icon-close.svg' | inline_asset_content }}</button>
     <div class="quick-view-dialog__content">
+      <div class="quick-view"></div>
        <div class="quick-view-dialog__content__loading__spinner loading__spinner">
         {{ 'loading-spinner.svg' | inline_asset_content }}
       </div>
@@ -116,7 +117,7 @@
             const quickViewMarkup = data['ss-quick-view'];
 
             if (quickViewMarkup) {
-                this.dialog.querySelector('.quick-view-dialog__content').innerHTML = quickViewMarkup;
+                this.dialog.querySelector('.quick-view-dialog__content .quick-view').innerHTML = quickViewMarkup;
             }
 
           }catch(e){
