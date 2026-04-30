@@ -36,7 +36,7 @@
 
     <!-- Desktop Menu -->
     <div class="custom-header__logo">
-      <a href="{{ section.settings.logo_url }}" class="">
+      <a href="{{ section.settings.logo_url | default:"/" }}" class="">
         {% if section.settings.logo_type == 'logo' and section.settings.logo_image != blank %}
           {{ section.settings.logo_image | image_url: width: 150 | image_tag }}
         {% else %}
