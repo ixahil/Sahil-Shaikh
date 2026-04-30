@@ -70,8 +70,10 @@
     <button class="quick-view-dialog__close">{{ 'icon-close.svg' | inline_asset_content }}</button>
     <div class="quick-view-dialog__content">
       <div class="quick-view"></div>
-       <div class="quick-view-dialog__content__loading__spinner loading__spinner">
-        {{ 'loading-spinner.svg' | inline_asset_content }}
+      <div class="loading__spinner">
+        <div class="quick-view-dialog__content__loading__spinner">
+          {{ 'loading-spinner.svg' | inline_asset_content }}
+        </div>
       </div>
     </div>
   </dialog>
@@ -88,8 +90,8 @@
           this.dialog = this.querySelector('dialog');
           this.btns = this.querySelectorAll('.hotspot-collection-grid__tracker');
           this.closeDialog = this.querySelector('.quick-view-dialog__close');
-          this.loader = this.querySelector(".quick-view-dialog__content__loading__spinner")
-          this.quickview = this.querySelector(".quick-view-dialog__content .quick-view");
+          this.loader = this.querySelector('.quick-view-dialog__content__loading__spinner');
+          this.quickview = this.querySelector('.quick-view-dialog__content .quick-view');
         }
 
         connectedCallback() {
@@ -107,13 +109,13 @@
 
         close() {
           this.dialog.close();
-          this.loader.style = "display:block";
+          this.loader.style = 'display:block';
           this.quickview.replaceChildren();
         }
 
-        async getMarkup(uri){
-          try{
-            const res = await fetch(uri); 
+        async getMarkup(uri) {
+          try {
+            const res = await fetch(uri);
             if (!res.ok) this.handleError();
 
             const data = await res.json();
@@ -121,18 +123,17 @@
             const quickViewMarkup = data['ss-quick-view'];
 
             if (quickViewMarkup) {
-                this.dialog.querySelector('.quick-view-dialog__content .quick-view').innerHTML = quickViewMarkup;
-                this.loader.style = "display:none"
+              this.dialog.querySelector('.quick-view-dialog__content .quick-view').innerHTML = quickViewMarkup;
+              this.loader.style = 'display:none';
             }
-
-          }catch(e){
-            console.error("something wrong with quickview", e)
+          } catch (e) {
+            console.error('something wrong with quickview', e);
           }
         }
 
-        handleError(e){
+        handleError(e) {
           this.close();
-          console.error("something wrong with quickview", e)
+          console.error('something wrong with quickview', e);
         }
       }
     );
