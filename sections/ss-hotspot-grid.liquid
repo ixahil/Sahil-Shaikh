@@ -109,7 +109,8 @@
 
         close() {
           this.dialog.close();
-          this.loader.style.display = 'block';
+          this.loader.style.display = 'flex';
+          this.quickview.replaceChildren();
           this.quickview.replaceChildren();
         }
 
