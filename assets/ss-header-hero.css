@@ -116,6 +116,7 @@
 .custom-footer-strip p{margin:0;}
 
 @media screen and (max-width: 990px){
+    .cc-header-hero .custom-page-width{padding:16px 24px;}
     .custom-header__logo{width:100%;text-align:center;}
     .custom-header__container{justify-content: start; align-items: end;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;}
     .summary.main-menu__toggle-icon{padding-bottom: 2px;}
@@ -127,9 +128,6 @@
         transform:translateX(-50%);
     }
 
-    .cc-header-hero .custom-page-width{
-        padding:16px 24px;
-    }
 }
     
 @media screen and (min-width: 990px){
