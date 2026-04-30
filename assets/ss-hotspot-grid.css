@@ -15,7 +15,7 @@
 
 .collection__title .title{
   font-family: "Lustria", serif;
-  font-size: 36px;
+  font-size: clamp(24px, 4vw, 36px);
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0;
@@ -63,6 +63,10 @@
 
   .cc-hotspot-grid .custom-page-width {
     padding: 40px 16px 16px 24px;
+  }
+
+  .collection__title .title{
+    text-align:center;
   }
 
 }
