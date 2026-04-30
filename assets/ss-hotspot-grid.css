@@ -46,40 +46,6 @@
   padding: 0;
 }
 
-
-.quick-view-dialog{
-    border: none;
-    min-height: 447px;
-    width: 311px;
-}
-
-/* .quick-view-dialog__content{
-    width: 311px;
-    height: 447px;
-} */
-
-
-.quick-view-dialog__content__loading__spinner{
-    width: 50px;
-    height: 50px;
-}
-
-.quick-view-dialog__close svg{
-    display: block;
-    width: 12px;
-    height: 12px;
-}
-
-.quick-view-dialog__close{
-    float: right;
-    cursor: pointer;
-    border: 0;
-    background: none;
-    padding: 0px;
-    margin: 0px;
-}
-
-
 /* Tablet */
 @media (max-width: 990px) {
   .hotspot-collection-grid {
