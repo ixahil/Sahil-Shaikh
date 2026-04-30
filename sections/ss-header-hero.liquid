@@ -19,29 +19,31 @@
 <!-- Header -->
 <header class="custom-header">
   <div class="custom-header__container custom-page-width">
-  <!-- Mobile Menu -->
-  <details class="main-menu__disclosure mobile-only">
-    <summary class="main-menu__toggle-icon">
-      <span class="icon-menu icon">{{ 'icon-menu-hamburger.svg' | inline_asset_content }}</span>
-      <span class="icon-close icon">{{ 'icon-menu-close.svg' | inline_asset_content }}</span>
-    </summary>
-    <div class="main-menu__content">
-      <p>{{ section.settings.tagline }}</p>
-      <a href="{{ section.settings.header_cta_link }}" class="cta cta-primary">
-        <span>{{ section.settings.header_cta_label | escape }}</span>
-        <span class="icon">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
-      </a>
-    </div>
-  </details>
+    <!-- Mobile Menu -->
+    <details class="main-menu__disclosure mobile-only">
+      <summary class="main-menu__toggle-icon">
+        <span class="icon-menu icon">{{ 'icon-menu-hamburger.svg' | inline_asset_content }}</span>
+        <span class="icon-close icon">{{ 'icon-menu-close.svg' | inline_asset_content }}</span>
+      </summary>
+      <div class="main-menu__content">
+        <p>{{ section.settings.tagline }}</p>
+        <a href="{{ section.settings.header_cta_link }}" class="cta cta-primary">
+          <span>{{ section.settings.header_cta_label | escape }}</span>
+          <span class="icon">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
+        </a>
+      </div>
+    </details>
 
     <!-- Desktop Menu -->
-    <a href="{{ section.settings.logo_url }}" class="custom-header__logo">
-      {% if section.settings.logo_type == 'logo' and section.settings.logo_image != blank %}
-        {{ section.settings.logo_image | image_url: width: 150 | image_tag }}
-      {% else %}
-        {{ section.settings.logo_text | escape | default: 'Logo Text' }}
-      {% endif %}
-    </a>
+    <div class="custom-header__logo">
+      <a href="{{ section.settings.logo_url }}" class="">
+        {% if section.settings.logo_type == 'logo' and section.settings.logo_image != blank %}
+          {{ section.settings.logo_image | image_url: width: 150 | image_tag }}
+        {% else %}
+          {{ section.settings.logo_text | escape | default: 'Logo Text' }}
+        {% endif %}
+      </a>
+    </div>
     {% if section.settings.tagline %}
       <div class="custom-header__center desktop-only">
         {% comment %} Menu Can be here {% endcomment %}
