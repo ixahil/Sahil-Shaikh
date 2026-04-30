@@ -51,7 +51,7 @@
 }
 
 .quick-view-dialog__image { width: calc(48% - 4px); }
-.quick-view-dialog__col   { width: calc(52% - 4px); padding-top: clamp(13px, 4vw, 40px);}
+.quick-view-dialog__col   { width: calc(52% - 4px); padding-top: 13px;}
 
 .quick-view-dialog__image img {
   width: 100%;
@@ -72,7 +72,7 @@
 
 .quick-view-dialog__product-info .product__description {
   font-family: 'Jost', sans-serif;
-  font-size: clamp(12px, 4vw, 14px);
+  font-size: clamp(12px, 2vw, 14px);
   font-weight: 300;
   margin: 0 0 12px;
   line-height: 1.1;
@@ -85,3 +85,5 @@
   margin: 0 0 12px;
   line-height: 1.2;
 }
+
+
