@@ -1,11 +1,11 @@
 {% liquid
   assign variant = product.first_available_variant
   assign compare_at_price = variant.compare_at_price
-  assign price = variant.price | default: 1999
+  assign price = variant.price | default: product.price
   assign available = variant.available | default: false
   assign money_price = price | money
 
-  if variant == product and product.price_varies
+  if product.price_varies
     assign money_price = 'products.product.price.from_price_html' | t: price: money_price
   endif
 %}
@@ -16,12 +16,10 @@
       {{ product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy' }}
     </div>
     <div class="quick-view-dialog__col">
-      <h2 class="product__title">
-        {{ product.title | escape }}
-      </h2>
+      <h2 class="product__title">{{ product.title | escape }}</h2>
 
       <div class="price__sale">
-        {%- unless product.price_varies == false and product.compare_at_price_varies %}
+        {% if compare_at_price > price %}
           <span class="visually-hidden visually-hidden--inline">
             {{- 'products.product.price.regular_price' | t -}}
           </span>
@@ -34,12 +32,19 @@
               {% endif %}
             </s>
           </span>
-        {%- endunless -%}
-        <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.sale_price' | t }}</span>
+        {% endif %}
+
+        <span class="visually-hidden visually-hidden--inline">
+          {{ 'products.product.price.sale_price' | t }}
+        </span>
         <span class="price-item price-item--sale price-item--last">
           {{ money_price }}
         </span>
       </div>
+
+      {% unless available %}
+        <p class="product__sold-out">{{ 'products.product.sold_out' | t }}</p>
+      {% endunless %}
 
       {%- if product.description != blank -%}
         <div class="product__description rte quick-add-hidden">
