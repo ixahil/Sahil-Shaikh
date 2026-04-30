@@ -111,7 +111,7 @@
 }
 
 .custom-footer-strip p{margin:0;}
-
+/* 
 @media screen and (max-width: 990px){
     .custom-header{padding:24px 16px;}
     .custom-hero{padding-top:50px;}
@@ -157,4 +157,4 @@
         bottom:60px;
         left:50px;
     }
-}
+} */
