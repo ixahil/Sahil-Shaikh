@@ -170,4 +170,5 @@
     .desktop-only{display:block;}
 
     .custom-hero__mobile-image{display:none;}
+    .custom-hero__overlay-content{position: absolute; bottom: 0; left: 0; right:0; padding: 0 15px 5% 15px;}
 }
