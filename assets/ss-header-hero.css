@@ -116,6 +116,7 @@
     .custom-page-width{padding:24px 16px;}    
     .custom-header__logo{width:100%;text-align:center;}
     .custom-header__container{justify-content: start; align-items: end;}
+    .summary.main-menu__toggle-icon{padding-bottom: 2px;}
 }
     /* 
     .custom-header{padding:24px 16px;}
@@ -163,3 +164,10 @@
         left:50px;
     }
 } */
+
+@media screen and (min-width: 990px){
+    .mobile-only{display:none;}
+    .desktop-only{display:block;}
+
+    .custom-hero__mobile-image{display:none;}
+}
