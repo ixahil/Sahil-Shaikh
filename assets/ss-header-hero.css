@@ -111,8 +111,11 @@
 }
 
 .custom-footer-strip p{margin:0;}
+
 @media screen and (max-width: 990px){
     .custom-page-width{padding:24px 16px;}    
+    .custom-header__logo{width:100%;text-align:center;}
+    .custom-header__container{justify-content: start; align-items: end;}
 }
     /* 
     .custom-header{padding:24px 16px;}
