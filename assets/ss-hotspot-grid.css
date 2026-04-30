@@ -31,7 +31,7 @@
 .hotspot-collection-grid__media-wrapper img {
   width: 100%;
   height: 100%;
-  aspect-ratio: 4 / 4; 
+  aspect-ratio: 433/444; 
   object-fit: cover;
   object-position: center;
   display: block;
@@ -49,12 +49,14 @@
 
 .quick-view-dialog{
     border: none;
+    min-height: 447px;
+    width: 311px;
 }
 
-.quick-view-dialog__content{
+/* .quick-view-dialog__content{
     width: 311px;
     height: 447px;
-}
+} */
 
 
 .quick-view-dialog__content__loading__spinner{
@@ -92,9 +94,9 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 0.5rem;
     }
-    .hotspot-collection-grid__media-wrapper img {
+    /* .hotspot-collection-grid__media-wrapper img {
         aspect-ratio: 1 / 1; 
-    }
+    } */
     button.hotspot-collection-grid__tracker svg {
         width: 15.75px;
         height: 15.75px;
