@@ -122,10 +122,10 @@
     .custom-header__logo{width:100%;text-align:center;}
     .custom-header__container{justify-content: start; align-items: end;}
     .summary.main-menu__toggle-icon{padding-bottom: 2px;}
-    .custom-hero__content{align-items: center;text-align: center;}
+    .custom-hero__content{align-items: center;text-align: center;padding-top:50px}
     .custom-hero__overlay-btn{
         position:absolute;
-        bottom:60px;
+        bottom:40px;
         left:50%;
         transform:translateX(-50%);
     }
