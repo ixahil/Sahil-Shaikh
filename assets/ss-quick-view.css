@@ -51,7 +51,7 @@
 }
 
 .quick-view-dialog__image { width: calc(48% - 4px); }
-.quick-view-dialog__col   { width: calc(52% - 4px); padding-top: 13px;}
+.quick-view-dialog__col   { width: calc(52% - 4px); padding-top: clamp(13px, 4vw, 40px);}
 
 .quick-view-dialog__image img {
   width: 100%;
