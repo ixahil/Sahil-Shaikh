@@ -4,6 +4,7 @@
     background: var(--section-bg-color);
 }
 .custom-header__container{display:flex; justify-content: space-between; align-items: center;}
+.custom-page-width{max-width: var(--page-width); margin: 0 auto; padding: 0 1.5rem;}
 .custom-header__logo{justify-self: start;}
 .custom-header__center{justify-self: center; text-align:center}
 .custom-header__center p{margin: 0;}
