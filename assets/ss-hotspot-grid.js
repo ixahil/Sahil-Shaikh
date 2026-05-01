@@ -116,7 +116,7 @@
               productVariantId: variantInput.value,
               cartData: response,
             }).then(() => {
-              document.querySelector('cart-drawer').open();
+              this.cart.renderContents(response);
             });
 
           } catch (error) {
