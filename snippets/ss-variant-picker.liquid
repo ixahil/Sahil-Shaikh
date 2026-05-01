@@ -100,14 +100,3 @@
   {{ color_variant_markup }}
   {{ size_variant_markup }}
 </ss-variant-picker>
-
-<script>
-  if(!customElements.get("ss-variant-picker")){
-  customElements.define("ss-variant-picker"
-      class SSVariantPicker extends HTMLElement{
-          constructor(){
-              super();
-          }
-      })
-  }
-</script>
