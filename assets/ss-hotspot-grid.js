@@ -105,7 +105,7 @@ if (!customElements.get('hotspot-grid')) {
             id: this.upsellVariantId,
             quantity: 1,
             properties: {
-              "_upsell-product": variantInput.value
+              "_upsell-product": variantInput.value,
               "_upsell-location": "Quick View"
             }
           });
