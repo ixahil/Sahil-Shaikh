@@ -9,8 +9,9 @@ if(!customElements.get("ss-variant-picker")){
                 this.vIdInput = document.querySelector(".quick-view-variant-id");
                 
                 this.variantData = JSON.parse(document.querySelector("[variant-data]").innerHTML);
-                
-                this.selectedOptions = new Array(this.querySelectorAll('fieldset').length).fill(null);
+                this.fieldsets = [...this.querySelectorAll('fieldset[data-option-name]')];
+
+                this.selectedOptions = new Array(this.fieldsets.length).fill(null);
                 
                 this.inputs = this.querySelectorAll('input[type="radio"]');
 
