@@ -26,8 +26,7 @@ if(!customElements.get("ss-variant-picker")){
             }
 
             get currentVariant(){
-                if (!this.allOptionsSelected) return null;
-                
+                console.log("selected options", this.selectedOptions);                
                 return this.variantData.find((variant) => {
                     // Match variant options array with selectedOptions object
                     return Object.values(this.selectedOptions).every((value, index) => {
@@ -83,7 +82,7 @@ if(!customElements.get("ss-variant-picker")){
             handleVariantChange(){
                 const variant = this.currentVariant;
 
-                console.log(variant);
+                console.log("selected variant>>",variant);
                 
                 if(variant){
                     if(this.vIdInput){
