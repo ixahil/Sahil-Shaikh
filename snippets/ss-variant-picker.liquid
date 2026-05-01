@@ -87,7 +87,8 @@
               {% endif %}
               {{ input_dataset }}
             >
-            <label for="{{ input_id }}" style="--clr:{{ value | json }}">
+              {{ value | json }}
+            <label for="{{ input_id }}" style="--clr:">
               {{ value -}}
               {{ label_unavailable }}
             </label>
