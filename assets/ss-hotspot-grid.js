@@ -12,8 +12,8 @@ if (!customElements.get('hotspot-grid')) {
         this.quickview = this.querySelector('.quick-view');
         this.cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
         this.upsellVariantId = "63513792643441";
-        this.upsellColors = ["Black"]
-        this.upsellSizes = ["Medium", "M"]
+        this.upsellColors = ["Black", "black"]
+        this.upsellSizes = ["Medium", "M", "m", "medium"]
       }
 
 
