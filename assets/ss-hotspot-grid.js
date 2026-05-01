@@ -135,11 +135,14 @@ if (!customElements.get('hotspot-grid')) {
           button.classList.remove('loading');
           button.classList.add('error');
         } finally {
+          if (this.cart && this.cart.classList.contains('is-empty')) this.cart.classList.remove('is-empty');
           setTimeout(() => {
             button.disabled = false;
             button.innerText = originalText;
             button.classList.remove('success', 'error');
           }, 2000);
+          CartPerformance.measureFromEvent("add:user-action", evt);
+
         }
       }
     }
