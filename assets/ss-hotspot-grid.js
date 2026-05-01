@@ -12,7 +12,10 @@ if (!customElements.get('hotspot-grid')) {
         this.quickview = this.querySelector('.quick-view');
         this.cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
         this.upsellVariantId = "63513792643441";
-        this.variantPicker = this.querySelector("ss-variant-picker");
+      }
+
+      get variantPicker(){
+        this.querySelector("ss-variant-picker");
       }
 
       connectedCallback() {
