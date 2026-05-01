@@ -83,7 +83,7 @@ fieldset.js.product-form__input.product-form__input--pill input:checked + label{
     margin: 0;
     padding: 0;
     z-index: 99;
-    height: 130px;
+    height: 99px;
     overflow-y: auto;
 }
 
