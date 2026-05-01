@@ -84,6 +84,16 @@
   line-height: 1.2;
 }
 
+.quick-view-dialog__product-info .price__regular{
+    text-decoration: line-through;
+}
+
+.price-container{
+    display:flex;
+    gap: 1rem;
+    align-items:center;
+}
+
 
 
 .buy-buttons{
