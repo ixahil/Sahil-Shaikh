@@ -4,16 +4,21 @@ if(!customElements.get("ss-variant-picker")){
             constructor(){
                 super();
                 this.selectBox = this.querySelector(".size-select__box");
-                
+                this.selectList = this.select__box.querySelector(".size-select__list");
             }
 
             connectedCallback(){
-                this.selectBox.addEventListener("click", this.openSelect.bind(this))
+                this.selectBox.addEventListener("click", this.selectToggle.bind(this))
             }
 
 
-            openSelect(){
-                this.querySelector(".size-select__list").style.display = "block";
+            selectToggle(){
+                if(this.selectList.classList.contains("open")){
+                    this.querySelector(".size-select__list").classList.remove("open");
+                }
+                else{
+                    this.querySelector(".size-select__list").classList.add("open");
+                }
             }
 
 
