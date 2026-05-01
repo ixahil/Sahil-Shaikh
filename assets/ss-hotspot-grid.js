@@ -14,9 +14,6 @@ if (!customElements.get('hotspot-grid')) {
         this.upsellVariantId = "63513792643441";
       }
 
-      get variantPicker(){
-        document.querySelector("ss-variant-picker");
-      }
 
       connectedCallback() {
         this.btns?.forEach((btn) =>
@@ -94,7 +91,7 @@ if (!customElements.get('hotspot-grid')) {
         formData.append('id', variantInput.value);
         formData.append('quantity', 1);
 
-        console.log(this.variantPicker);
+        this.variantPicker = this.querySelector("ss-variant-picker");
         
         if(this.variantPicker){
           console.log(this.variantPicker.selectedOptions)
