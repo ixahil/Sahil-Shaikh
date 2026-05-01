@@ -39,6 +39,7 @@ if(!customElements.get("ss-variant-picker")){
             }
 
             connectedCallback(){
+                this.syncInitialState();
                 if(this.selectBox){
                     this.selectBox.addEventListener("click", this.selectToggle.bind(this));
                 }
@@ -72,6 +73,26 @@ if(!customElements.get("ss-variant-picker")){
                 
                 this.handleVariantChange();
             }
+
+            syncInitialState() {
+                this.fieldsets.forEach((fieldset) => {
+                    const index = this.fieldsets.indexOf(fieldset);
+
+                    // 1. radio inputs (Shopify default)
+                    const checked = fieldset.querySelector('input[type="radio"]:checked');
+                    if (checked) {
+                    this.selectedOptions[index] = checked.value;
+                    }
+
+                    // 2. custom dropdown (size select)
+                    const selectedText = fieldset.querySelector('.size-select__selected');
+                    if (selectedText && selectedText.innerText.trim()) {
+                    this.selectedOptions[index] = selectedText.innerText.trim();
+                    }
+                });
+
+                console.log("initial selectedOptions:", this.selectedOptions);
+                }
 
             handleRadioSelect(event){
                 const input = event.target;
