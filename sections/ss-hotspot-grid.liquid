@@ -102,7 +102,11 @@
           });
 
           this.closeDialog.addEventListener('click', this.close.bind(this));
-          this.dialog.addEventListener("click", this.close.bind(this));
+          this.dialog.addEventListener("click", (event) => {
+            if (event.target === this.dialog) {
+              this.close();
+            }
+          });
         }
 
         async open(btn) {
