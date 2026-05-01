@@ -123,3 +123,9 @@ if(!customElements.get("ss-variant-picker")){
         }
     );
 }
+
+document.addEventListener("DOMContentLoaded", (event) => {
+    document.querySelector('button[name="add"][data-atc]').addEventListener("click", (event)=>{
+        event.target.disabled;
+    })
+})
