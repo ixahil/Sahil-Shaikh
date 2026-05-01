@@ -10,7 +10,7 @@ if(!customElements.get("ss-variant-picker")){
                 
                 this.variantData = JSON.parse(document.querySelector("[variant-data]").innerHTML);
                 
-                this.selectedOptions = {};
+                this.selectedOptions = new Array(this.querySelectorAll('fieldset').length).fill(null);
                 
                 this.inputs = this.querySelectorAll('input[type="radio"]');
 
@@ -25,12 +25,14 @@ if(!customElements.get("ss-variant-picker")){
                 return this.querySelectorAll('fieldset').length;
             }
 
-            get currentVariant(){
-                console.log("selected options", this.selectedOptions);                
+            get currentVariant() {
+                if (this.selectedOptions.includes(null)) return null;
+
+                console.log("selected options", this.selectedOptions);
+
                 return this.variantData.find((variant) => {
-                    // Match variant options array with selectedOptions object
-                    return Object.values(this.selectedOptions).every((value, index) => {
-                        return variant.options[index] === value;
+                    return variant.options.every((opt, index) => {
+                    return opt === this.selectedOptions[index];
                     });
                 });
             }
