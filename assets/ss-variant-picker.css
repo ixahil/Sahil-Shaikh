@@ -90,3 +90,8 @@ fieldset.js.product-form__input.product-form__input--pill input:checked + label{
     color: #fff
 }
 
+ss-variant-picker{
+    display:flex;
+    flex-direction: column;
+    gap:12px;
+}
