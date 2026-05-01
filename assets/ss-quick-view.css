@@ -76,7 +76,7 @@
   line-height: 1.1;
 }
 
-.quick-view-dialog__product-info .price__sale {
+.quick-view-dialog__product-info .price__sale,.quick-view-dialog__product-info .price__regular {
   font-family: 'Lustria', serif; 
   font-size: 16px;
   font-weight: normal;
