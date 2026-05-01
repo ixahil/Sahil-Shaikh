@@ -11,6 +11,8 @@ if (!customElements.get('hotspot-grid')) {
         this.loader = this.querySelector('.custom-loading__spinner');
         this.quickview = this.querySelector('.quick-view');
         this.cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
+        this.upsellVariantId = "63513792643441";
+        this.variantPicker = this.querySelector("ss-variant-picker");
       }
 
       connectedCallback() {
@@ -88,6 +90,10 @@ if (!customElements.get('hotspot-grid')) {
         const formData = new FormData();
         formData.append('id', variantInput.value);
         formData.append('quantity', 1);
+        
+        if(this.variantPicker){
+          console.log(this.variantPicker.selectedOptions)
+        }
 
         if (this.cart) {
           const sections = this.cart
@@ -102,9 +108,6 @@ if (!customElements.get('hotspot-grid')) {
           const response = await fetch('/cart/add.js', {
             method: 'POST',
             body: formData,
-            headers: {
-              'X-Requested-With': 'XMLHttpRequest',
-            },
           });
 
           if (!response.ok) throw new Error('Add to cart failed');
