@@ -125,6 +125,7 @@ if(!customElements.get("ss-variant-picker")){
 }
 
 document.addEventListener("DOMContentLoaded", (event) => {
+    console.log(document.querySelector('button[name="add"][data-atc]'))
     document.querySelector('button[name="add"][data-atc]').addEventListener("click", (event)=>{
         event.target.disabled;
     })
