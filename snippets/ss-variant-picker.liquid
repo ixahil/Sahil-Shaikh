@@ -91,7 +91,10 @@
     {% endif %}
   {% endfor %}
 
-  {{ color_variant_markup }}
-  {{ size_variant_markup }}
+  <div class="variant-option-group">
+    {{ color_variant_markup }}
+  </div>
+  <div class="variant-option-group">
+    {{ size_variant_markup }}
+  </div>
 </ss-variant-picker>
-
