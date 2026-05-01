@@ -102,6 +102,8 @@
 
             if(!response.ok) throw new error("Item not added");
 
+            const data = await response.json();
+
             button.innerText = 'Added!';
             button.classList.remove('loading');
             button.classList.add('success');
@@ -112,13 +114,13 @@
               button.classList.remove('success');
             }, 2000);
 
-            // publish(PUB_SUB_EVENTS.cartUpdate, {
-            //   source: 'product-form',
-            //   productVariantId: variantInput.value,
-            //   cartData: response,
-            // }).then(() => {
-            //   console.log(this.cart);
-            // });
+            publish(PUB_SUB_EVENTS.cartUpdate, {
+              source: 'product-form',
+              productVariantId: variantInput.value,
+              cartData: response,
+            }).then(() => {
+              console.log(this.cart);
+            });
             this.cart.renderContents(response);
 
 
