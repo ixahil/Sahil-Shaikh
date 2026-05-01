@@ -83,11 +83,12 @@
           button.innerText = 'Adding...';
 
           const variantInput = this.quickview.querySelector(".quick-view-variant-id");
+          if(!variantInput) throw new error("something wrong")
 
           const formData = {
-            items: [{
-              id: variantInput?.value,
-              quantity: 1
+            'items': [{
+              'id': variantInput.value,
+              'quantity': 2
             }]
           };
 
