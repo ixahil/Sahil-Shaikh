@@ -126,6 +126,7 @@ button[name="add"].loading {
     pointer-events: none;
 }
 
+
 button[name="add"].loading::after {
     content: '';
     display: inline-block;
