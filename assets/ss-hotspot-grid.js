@@ -84,7 +84,7 @@
           button.innerText = 'Adding...';
 
           const variantInput = this.quickview.querySelector(".quick-view-variant-id");
-          if(!variantInput) throw new error("something wrong")
+          if(!variantInput) throw new Error("something wrong")
 
           const formData = {
             'items': [{
@@ -100,7 +100,7 @@
               body: JSON.stringify(formData)
             });
 
-            if(!response.ok) throw new error("Item not added");
+            if(!response.ok) throw new Error("Item not added");
 
             const data = await response.json();
 
@@ -117,11 +117,11 @@
             publish(PUB_SUB_EVENTS.cartUpdate, {
               source: 'product-form',
               productVariantId: variantInput.value,
-              cartData: response,
+              cartData: data,
             }).then(() => {
               console.log(this.cart);
             });
-            this.cart.renderContents(response);
+            this.cart.renderContents(data);
 
 
           } catch (error) {
