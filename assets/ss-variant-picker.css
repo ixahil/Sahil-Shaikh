@@ -27,6 +27,7 @@ fieldset.js.product-form__input.product-form__input--pill label{
     float: left;
     padding: 10px 10px 8px 15px;
     border:  1px solid black;
+    cursor: pointer;
 }
 
 fieldset.js.product-form__input.product-form__input--pill label:before{
