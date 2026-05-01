@@ -30,9 +30,6 @@
         <fieldset class="js product-form__input product-form__input--pill">
           <legend class="form__label">
             {{ option.name }}:
-            <span data-selected-value>
-              {{- option.selected_value -}}
-            </span>
           </legend>
           {%- for value in option.values -%}
             <input
@@ -65,9 +62,6 @@
         <fieldset class="js product-form__input product-form__input--pill">
           <legend class="form__label">
             {{ option.name }}:
-            <span data-selected-value>
-              {{- option.selected_value -}}
-            </span>
           </legend>
           {%- for value in option.values -%}
             {%- capture input_id -%}
