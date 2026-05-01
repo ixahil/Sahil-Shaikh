@@ -10,7 +10,7 @@ if(!customElements.get("ss-variant-picker")){
 
             connectedCallback(){
                 this.selectBox.addEventListener("click", this.selectToggle.bind(this));
-                console.log("this.selectList", this.selectList);
+                
             }
 
 
