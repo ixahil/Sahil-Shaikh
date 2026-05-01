@@ -70,6 +70,8 @@ if(!customElements.get("ss-variant-picker")){
 
             handleVariantChange(){
                 const variant = this.currentVariant;
+
+                console.log(variant);
                 
                 if(variant){
                     if(this.vIdInput){
