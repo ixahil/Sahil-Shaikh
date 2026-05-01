@@ -6,6 +6,8 @@ if(!customElements.get("ss-variant-picker")){
                 this.select = this.querySelector(".size-select");
                 this.selectBox = this.select.querySelector(".size-select__box");
                 this.selectList = this.select.querySelector(".size-select__list");
+                this.vIdInput = document.querySelector(".quick-view-variant-id")
+                this.variantData = document.querySelector("[variant-data]");
             }
 
             connectedCallback(){
@@ -27,6 +29,11 @@ if(!customElements.get("ss-variant-picker")){
                 const item = event.target;
                 this.selectBox.querySelector(".size-select__selected").innerText = item.dataset.value;
                 this.selectToggle();
+                this.handleVariantSelect();
+            }
+
+            handleVariantSelect(){
+                console.log(this.variantData);
             }
 
 
