@@ -26,9 +26,9 @@ if(!customElements.get("ss-variant-picker")){
             }
 
             get currentVariant() {
+                console.log("selected options", this.selectedOptions);
                 if (this.selectedOptions.includes(null)) return null;
 
-                console.log("selected options", this.selectedOptions);
 
                 return this.variantData.find((variant) => {
                     return variant.options.every((opt, index) => {
