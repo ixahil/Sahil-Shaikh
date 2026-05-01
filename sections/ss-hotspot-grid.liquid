@@ -195,7 +195,15 @@
               button.classList.remove('success');
             }, 2000);
 
-            document.dispatchEvent(new CustomEvent('cart:updated'));
+            document.dispatchEvent(new CustomEvent(PUB_SUB_EVENTS.cartUpdate, {
+              detail: {
+                source: 'quick-view',
+                items: [{
+                  id: variantInput?.value,
+                  quantity: 1
+                }]
+              }
+            }));
 
           } catch (error) {
             console.error('Error adding to cart:', error);
