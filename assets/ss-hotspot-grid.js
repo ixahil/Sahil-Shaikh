@@ -112,14 +112,15 @@
               button.classList.remove('success');
             }, 2000);
 
-            publish(PUB_SUB_EVENTS.cartUpdate, {
-              source: 'product-form',
-              productVariantId: variantInput.value,
-              cartData: response,
-            }).then(() => {
-              console.log(this.cart);
-              this.cart.renderContents(response);
-            });
+            // publish(PUB_SUB_EVENTS.cartUpdate, {
+            //   source: 'product-form',
+            //   productVariantId: variantInput.value,
+            //   cartData: response,
+            // }).then(() => {
+            //   console.log(this.cart);
+            // });
+            this.cart.renderContents(response);
+
 
           } catch (error) {
             console.error('Error adding to cart:', error);
