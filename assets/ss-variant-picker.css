@@ -68,6 +68,7 @@ fieldset.js.product-form__input.product-form__input--pill input:checked + label{
     text-align: center;
     position: relative;
     align-items: center;
+    cursor: pointer;
 }
 
 .size-select__list{
