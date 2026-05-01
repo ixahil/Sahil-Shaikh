@@ -12,8 +12,9 @@ if (!customElements.get('hotspot-grid')) {
         this.quickview = this.querySelector('.quick-view');
         this.cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
         this.upsellVariantId = "63513792643441";
-        this.upsellColors = ["Black", "black"];
-        this.upsellSizes = ["Medium", "M", "m", "medium"];
+        this.normalize = (v) => v?.toLowerCase().trim();
+        this.upsellColors = ["black"];
+        this.upsellSizes = ["m", "medium"];
       }
 
 
@@ -31,16 +32,25 @@ if (!customElements.get('hotspot-grid')) {
         this.quickview?.addEventListener('click', (e) =>
           this.handleATC(e)
         );
+        
+        this.dialog?.addEventListener('close', () => { // Esc key
+          this.loader?.classList.remove('hidden');  
+          this.quickview?.replaceChildren();     
+        });
       }
 
       async open(btn) {
         if (!this.dialog) return;
+        // Abort any in-flight request
+        this.fetchController?.abort();
+        this.fetchController = new AbortController();
 
         this.dialog.showModal();
         this.loader?.classList.remove('hidden');
+        this.quickview?.replaceChildren();
 
         await this.getMarkup(
-          `/products/${btn.dataset.handle}?sections=ss-quick-view`
+          `/products/${btn.dataset.handle}?sections=ss-quick-view`, this.fetchController.signal
         );
       }
 
@@ -50,9 +60,9 @@ if (!customElements.get('hotspot-grid')) {
         this.quickview?.replaceChildren();
       }
 
-      async getMarkup(uri) {
+      async getMarkup(uri, signal) {
         try {
-          const res = await fetch(uri);
+          const res = await fetch(uri, { signal });
           if (!res.ok) throw new Error('Quickview fetch failed');
 
           const data = await res.json();
@@ -63,8 +73,12 @@ if (!customElements.get('hotspot-grid')) {
             this.loader?.classList.add('hidden');
           }
         } catch (e) {
+          if (e.name === 'AbortError') return; // Ignore aborted requests
           console.error('Quickview error:', e);
-          this.close();
+          this.loader?.classList.add('hidden');
+          this.quickview.innerHTML = `
+            <p class="quick-view-error">Sorry, we couldn't load this product. Please try again.</p>
+          `;
         }
       }
 
@@ -96,15 +110,10 @@ if (!customElements.get('hotspot-grid')) {
           }
         ];
 
-        this.variantPicker = this.querySelector("ss-variant-picker");
-        const normalize = (v) => v?.toLowerCase().trim(); // Normalize so Black or black should match
-
-        let selectedOptions = this.variantPicker?.currentVariant; // selected options ["", ""]
-
-        selectedOptions = selectedOptions?.options?.map(normalize) || [];
+        const variantPicker =  this.quickview.querySelector("ss-variant-picker");
+        let selectedOptions = this.variantPicker?.currentVariant?.options?.map(this.normalize) || []; // selected options ["", ""] // Normalize so Black or black should match
 
         const hasColorMatch = selectedOptions.some(opt => this.upsellColors.includes(opt));
-
         const hasSizeMatch = selectedOptions.some(opt => this.upsellSizes.includes(opt));
 
         const shouldUpsell = hasColorMatch && hasSizeMatch;
@@ -112,7 +121,7 @@ if (!customElements.get('hotspot-grid')) {
         console.log("shouldUpsell", shouldUpsell)
         
         if (shouldUpsell) {
-          items.push({
+          itemsToAdd.push({
             id: this.upsellVariantId,
             quantity: 1,
             properties: {
