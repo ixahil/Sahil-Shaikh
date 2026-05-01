@@ -19,44 +19,6 @@
         {%- capture input_name -%}
           {{ option.name }}-{{ option.position }}
         {%- endcapture -%}
-        <fieldset class="js product-form__input product-form__input--pill">
-          <legend class="form__label">
-            {{ option.name }}:
-            <span data-selected-value>
-              {{- option.selected_value -}}
-            </span>
-          </legend>
-          {%- for value in option.values -%}
-            <input
-              type="radio"
-              id="{{ input_id }}"
-              name="{{ input_name | escape }}"
-              value="{{ value | escape }}"
-              form="{{ product_form_id }}"
-              {% if value.selected %}
-                checked
-              {% endif %}
-              {% if option_disabled %}
-                class="disabled"
-              {% endif %}
-              {{ input_dataset }}
-            >
-            <label for="{{ input_id }}" style="--clr:{{ value.swatch.color.rgb }}">
-              {{ value -}}
-              {{ label_unavailable }}
-            </label>
-          {% endfor %}
-        </fieldset>
-      {% endcapture %}
-    {% endif %}
-    {% if color_option_names contains option.name %}
-      {% capture color_variant_markup %}
-        {%- capture input_id -%}
-          {{ section.id }}-{{ option.position }}-{{ forloop.index0 -}}
-        {%- endcapture -%}
-        {%- capture input_name -%}
-          {{ option.name }}-{{ option.position }}
-        {%- endcapture -%}
         <div class="size-select">
           <span class="size-select__selected">Choose your size</span>
           <ul class="size-select__list">
@@ -64,7 +26,7 @@
             <li class="size-select__list-item" data-value="{{ value }}">{{ value | escape }}</li>
           {% endfor %}
           </ul>
-          </div>
+        </div>
         <fieldset class="js product-form__input product-form__input--pill">
           <legend class="form__label">
             {{ option.name }}:
@@ -88,6 +50,44 @@
               {{ input_dataset }}
             >
             <label for="{{ input_id }}">
+              {{ value -}}
+              {{ label_unavailable }}
+            </label>
+          {% endfor %}
+        </fieldset>
+      {% endcapture %}
+    {% endif %}
+    {% if color_option_names contains option.name %}
+      {% capture color_variant_markup %}
+        {%- capture input_id -%}
+          {{ section.id }}-{{ option.position }}-{{ forloop.index0 -}}
+        {%- endcapture -%}
+        {%- capture input_name -%}
+          {{ option.name }}-{{ option.position }}
+        {%- endcapture -%}
+        <fieldset class="js product-form__input product-form__input--pill">
+          <legend class="form__label">
+            {{ option.name }}:
+            <span data-selected-value>
+              {{- option.selected_value -}}
+            </span>
+          </legend>
+          {%- for value in option.values -%}
+            <input
+              type="radio"
+              id="{{ input_id }}"
+              name="{{ input_name | escape }}"
+              value="{{ value | escape }}"
+              form="{{ product_form_id }}"
+              {% if value.selected %}
+                checked
+              {% endif %}
+              {% if option_disabled %}
+                class="disabled"
+              {% endif %}
+              {{ input_dataset }}
+            >
+            <label for="{{ input_id }}" style="--clr:{{ value.swatch.color.rgb }}">
               {{ value -}}
               {{ label_unavailable }}
             </label>
