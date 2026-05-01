@@ -12,8 +12,8 @@ if (!customElements.get('hotspot-grid')) {
         this.quickview = this.querySelector('.quick-view');
         this.cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
         this.upsellVariantId = "63513792643441";
-        this.upsellColors = ["Black", "black", "BLACK"]
-        this.upsellSizes = ["Medium", "M", "medium", "m"]
+        this.upsellColors = ["Black"]
+        this.upsellSizes = ["Medium", "M"]
       }
 
 
@@ -97,10 +97,17 @@ if (!customElements.get('hotspot-grid')) {
         ];
 
         this.variantPicker = this.querySelector("ss-variant-picker");
+        const normalize = (v) => v?.toLowerCase().trim(); // Normalize so Black or black should match
 
-        console.log(this.variantPicker.selectedOptions);
-        
-        const shouldUpsell = this.upsellColors.includes(this.variantPicker.selected.color) && this.upsellSizes.includes(this.variantPicker.selected.size);
+        let selectedOptions = this.variantPicker?.currentVariant; // selected options ["", ""]
+
+        selectedOptions = selectedOptions?.options?.map(normalize) || [];
+
+        const hasColorMatch = options.some(opt => this.upsellColors.includes(opt));
+
+        const hasSizeMatch = options.some(opt => this.upsellSizes.includes(opt));
+
+        const shouldUpsell = hasColorMatch && hasSizeMatch;
         
         if (shouldUpsell) {
           items.push({
