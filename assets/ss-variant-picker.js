@@ -33,7 +33,7 @@ if(!customElements.get("ss-variant-picker")){
             }
 
             handleVariantSelect(){
-                console.log(this.variantData.innerHTML);
+                console.log(JSON.parse(this.variantData.innerHTML));
             }
 
 
