@@ -126,6 +126,8 @@ if(!customElements.get("ss-variant-picker")){
 
 document.addEventListener("DOMContentLoaded", (event) => {
     const atcButton = document.querySelector('button[name="add"][data-atc]');
+
+    console.log(atcButton, "atcButton")
     
     if(atcButton){
         atcButton.addEventListener("click", (event) => {
