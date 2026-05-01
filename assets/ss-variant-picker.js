@@ -6,7 +6,7 @@ if(!customElements.get("ss-variant-picker")){
                 this.select = this.querySelector(".size-select");
                 this.selectBox = this.select?.querySelector(".size-select__box");
                 this.selectList = this.select?.querySelector(".size-select__list");
-                this.vIdInput = document.querySelector(".quick-view-variant-id");
+                this.vIdInput = this.querySelector(".quick-view-variant-id");
                 
                 this.variantData = JSON.parse(document.querySelector("[variant-data]").innerHTML);
                 this.fieldsets = [...this.querySelectorAll('fieldset[data-option-name]')];
@@ -66,7 +66,7 @@ if(!customElements.get("ss-variant-picker")){
                 
                 const fieldset = this.select.closest("fieldset");
                 const optionName = fieldset.dataset.optionName;
-                const index = Number(fieldset.dataset.optionIndex) - 1; // because option.position is 1 based
+                const index = this.fieldsets.indexOf(fieldset);
 
                 this.selectedOptions[index] = sizeValue;
                 
@@ -79,7 +79,7 @@ if(!customElements.get("ss-variant-picker")){
                
                 const fieldset = input.closest("fieldset");
                 const optionName = fieldset.dataset.optionName;
-                const index = Number(fieldset.dataset.optionIndex) - 1; // because option.position is 1 based
+                const index = this.fieldsets.indexOf(fieldset);
                 
                 this.selectedOptions[index] = input.value;
                 this.handleVariantChange();
