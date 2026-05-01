@@ -17,7 +17,17 @@ if(!customElements.get("ss-variant-picker")){
                 console.log("Variant Data>>",this.variantData)
             }
 
+            get allOptionsSelected() {
+                return Object.keys(this.selectedOptions).length === this.getOptionCount();
+            }
+
+            getOptionCount() {
+                return this.querySelectorAll('fieldset').length;
+            }
+
             get currentVariant(){
+                if (!this.allOptionsSelected) return null;
+                
                 return this.variantData.find((variant) => {
                     // Match variant options array with selectedOptions object
                     return Object.values(this.selectedOptions).every((value, index) => {
