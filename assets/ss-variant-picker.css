@@ -95,3 +95,15 @@ ss-variant-picker{
     flex-direction: column;
     gap:12px;
 }
+
+.select_down_arrow{
+    width: 50px;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    border-left: 1px solid #000;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
