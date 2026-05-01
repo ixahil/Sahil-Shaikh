@@ -13,9 +13,9 @@ if(!customElements.get("ss-variant-picker")){
                 return JSON.parse(document.querySelector("[variant-data]"));
             }
 
-            get currentVariant(){
-                return this.variantData
-            }
+            // get currentVariant(){
+            //     return this.variantData
+            // }
 
             connectedCallback(){
                 this.selectBox.addEventListener("click", this.selectToggle.bind(this));
