@@ -3,6 +3,19 @@ if(!customElements.get("ss-variant-picker")){
         class SSVariantPicker extends HTMLElement{
             constructor(){
                 super();
+                this.selectBox = this.querySelector(".size-select__box");
+                
             }
+
+            connectedCallback(){
+                this.selectBox.addEvenetListener("click", this.openSelect.bind(this))
+            }
+
+
+            openSelect(){
+                this.querySelector(".size-select__list").style.display = "block";
+            }
+
+
         })
 }
