@@ -45,10 +45,11 @@ if (!customElements.get("ss-variant-picker")) {
         connectedCallback() {
             this.syncInitialState();
 
+            // Select box e.g size
             this.selectBox?.addEventListener("click",this.selectToggle.bind(this));
-
             this.selectList?.querySelectorAll("li").forEach((item) => {item.addEventListener("click", this.handleSizeSelect.bind(this));});
-
+            
+            // all radio inputs e.g. colors
             this.inputs.forEach((input) => {input.addEventListener("change",this.handleRadioSelect.bind(this));});
         }
 
@@ -130,15 +131,17 @@ if (!customElements.get("ss-variant-picker")) {
 
             const comparePriceElement = document.querySelector(".price__regular");
 
+            // handle compare price if present
             if (comparePriceElement) {
-            if (variant.compare_at_price && variant.compare_at_price > variant.price) {
-                comparePriceElement.innerText = this.formatMoney(variant.compare_at_price);
-                comparePriceElement.classList.remove("hidden");
-            } else {
-                comparePriceElement.classList.add("hidden");
-            }
+                if (variant.compare_at_price && variant.compare_at_price > variant.price) {
+                    comparePriceElement.innerText = this.formatMoney(variant.compare_at_price);
+                    comparePriceElement.classList.remove("hidden");
+                } else {
+                    comparePriceElement.classList.add("hidden");
+                }
             }
 
+            // handle availablity
             const addToCartButton = document.querySelector('button[name="add"][data-atc]');
 
             if (addToCartButton) {
@@ -148,6 +151,7 @@ if (!customElements.get("ss-variant-picker")) {
                 : "Sold out";
             }
 
+            // handle image change
             if (variant.featured_image) {
             const mainImage = document.querySelector(".quick-view-dialog__image img");
 
@@ -157,7 +161,7 @@ if (!customElements.get("ss-variant-picker")) {
             }
         }
 
-            // UTIL
+        // UTIL leave firs currency $
         formatMoney(cents) {
             return `$${(cents / 100).toFixed(2)}`;
         }
