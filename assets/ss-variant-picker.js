@@ -125,8 +125,63 @@ if(!customElements.get("ss-variant-picker")){
 }
 
 document.addEventListener("DOMContentLoaded", (event) => {
-    console.log(document.querySelector('button[name="add"][data-atc]'))
-    document.querySelector('button[name="add"][data-atc]').addEventListener("click", (event)=>{
-        event.target.disabled;
-    })
-})
+    const atcButton = document.querySelector('button[name="add"][data-atc]');
+    
+    if(atcButton){
+        atcButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            
+            const button = event.target;
+            const originalText = button.innerText;
+            
+            // loading state
+            button.disabled = true;
+            button.classList.add('loading');
+            button.innerText = 'Adding...';
+            
+            const formData = {
+                'items': [{
+                    'id': document.querySelector(".quick-view-variant-id").value,
+                    'quantity': 1
+                }]
+            };
+            
+            fetch('/cart/add.js', {
+                method: 'POST',
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Added to cart:', data);
+                
+                button.innerText = 'Added!';
+                button.classList.remove('loading');
+                button.classList.add('success');
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    button.disabled = false;
+                    button.innerText = originalText;
+                    button.classList.remove('success');
+                }, 2000);
+                
+                document.dispatchEvent(new CustomEvent('cart:updated'));
+            })
+            .then(error => {
+                console.error('Error adding to cart:', error);
+                
+                // Error state
+                button.disabled = false;
+                button.innerText = 'Error - Try again';
+                button.classList.remove('loading');
+                button.classList.add('error');
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('error');
+                }, 2000);
+            });
+        });
+    }
+});
