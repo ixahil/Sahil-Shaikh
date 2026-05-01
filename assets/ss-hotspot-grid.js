@@ -1,148 +1,147 @@
- if (!customElements.get('hotspot-grid')) {
-    customElements.define(
-      'hotspot-grid',
-      class HotspotGrid extends HTMLElement {
-        constructor() {
-          super();
+if (!customElements.get('hotspot-grid')) {
+  customElements.define(
+    'hotspot-grid',
+    class HotspotGrid extends HTMLElement {
+      constructor() {
+        super();
 
-          this.dialog = this.querySelector('dialog');
-          this.btns = this.querySelectorAll('.hotspot-collection-grid__tracker');
-          this.closeDialog = this.querySelector('.quick-view-dialog__close');
-          this.loader = this.dialog.querySelector('.custom-loading__spinner');
-          this.quickview = this.querySelector('.quick-view-dialog__content .quick-view');
-          this.cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
-        }
+        this.dialog = this.querySelector('dialog');
+        this.btns = this.querySelectorAll('.hotspot-collection-grid__tracker');
+        this.closeBtn = this.querySelector('.quick-view-dialog__close');
+        this.loader = this.querySelector('.custom-loading__spinner');
+        this.quickview = this.querySelector('.quick-view');
+        this.cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
+      }
 
-        connectedCallback() {
-          if(this.btns){
-            this.btns.forEach((btn) => {
-              btn.addEventListener('click', this.open.bind(this, btn));
-            });
+      connectedCallback() {
+        this.btns?.forEach((btn) =>
+          btn.addEventListener('click', () => this.open(btn))
+        );
+
+        this.closeBtn?.addEventListener('click', () => this.close());
+
+        this.dialog?.addEventListener('click', (e) => {
+          if (e.target === this.dialog) this.close();
+        });
+
+        this.quickview?.addEventListener('click', (e) =>
+          this.handleATC(e)
+        );
+      }
+
+      async open(btn) {
+        if (!this.dialog) return;
+
+        this.dialog.showModal();
+        this.loader?.classList.remove('hidden');
+
+        await this.getMarkup(
+          `/products/${btn.dataset.handle}?sections=ss-quick-view`
+        );
+      }
+
+      close() {
+        this.dialog?.close();
+        this.loader?.classList.remove('hidden');
+        this.quickview?.replaceChildren();
+      }
+
+      async getMarkup(uri) {
+        try {
+          const res = await fetch(uri);
+          if (!res.ok) throw new Error('Quickview fetch failed');
+
+          const data = await res.json();
+          const markup = data['ss-quick-view'];
+
+          if (markup && this.quickview) {
+            this.quickview.innerHTML = markup;
+            this.loader?.classList.add('hidden');
           }
-
-          if(this.closeDialog){
-            this.closeDialog.addEventListener('click', this.close.bind(this));
-          }
-          if(this.dialog){
-            this.dialog.addEventListener("click", (event) => {
-              if (event.target === this.dialog) {
-                this.close();
-              }
-            });
-          }
-
-          this.quickview.addEventListener('click', this.handleATC.bind(this));
-        }
-
-        async open(btn) {
-          this.dialog.showModal();
-          await this.getMarkup(`/products/${btn.dataset.handle}?sections=ss-quick-view`);
-          
-        }
-
-        close() {
-          this.dialog.close();
-          this.loader.style.display = 'flex';
-          this.quickview.replaceChildren();
-          this.quickview.replaceChildren();
-        }
-
-        async getMarkup(uri) {
-          try {
-            const res = await fetch(uri);
-            if (!res.ok) this.handleError();
-
-            const data = await res.json();
-
-            const quickViewMarkup = data['ss-quick-view'];
-
-            if (quickViewMarkup) {
-              this.quickview.innerHTML = quickViewMarkup;
-              this.loader.style.display = 'none';
-            }
-          } catch (e) {
-            console.error('something wrong with quickview', e);
-          }
-        }
-
-        handleError(e) {
+        } catch (e) {
+          console.error('Quickview error:', e);
           this.close();
-          console.error('something wrong with quickview', e);
-          throw e;
-        }
-
-        async handleATC(event) {
-          const button = event.target.closest('button[name="add"][data-atc]');
-          if (!button) return;
-
-          event.preventDefault();
-
-          const originalText = button.innerText;
-
-          button.disabled = true;
-          button.classList.add('loading');
-          button.innerText = 'Adding...';
-
-          const variantInput = this.quickview.querySelector(".quick-view-variant-id");
-          if(!variantInput || !variantInput.value) throw new Error("something wrong")
-
-          const formData = new FormData();
-          formData.append('id', variantInput.value);
-          formData.append('quantity', 1);
-          if (this.cart) {
-            formData.append(
-                'sections',
-                this.cart.getSectionsToRender().map((section) => section.id)
-              );
-            formData.append('sections_url', window.location.pathname);
-          }
-          try {
-            const response = await fetch('/cart/add.js', {
-              method: 'POST',
-              body: formData
-            });
-
-            if(!response.ok) throw new Error("Item not added");
-
-            const data = await response.json();
-
-            button.innerText = 'Added!';
-            button.classList.remove('loading');
-            button.classList.add('success');
-
-            setTimeout(() => {
-              button.disabled = false;
-              button.innerText = originalText;
-              button.classList.remove('success');
-            }, 2000);
-
-            const startMarker = CartPerformance.createStartingMarker('add:wait-for-subscribers');
-            publish(PUB_SUB_EVENTS.cartUpdate, {
-              source: 'product-form',
-              productVariantId: formData.get('id'),
-              cartData: data,
-            }).then(() => {
-              CartPerformance.measureFromMarker('add:wait-for-subscribers', startMarker);
-            });
-
-            CartPerformance.measure("add:paint-updated-sections", () => {
-              this.cart.renderContents(data);
-            });
-
-          } catch (error) {
-            console.error('Error adding to cart:', error);
-
-            button.disabled = false;
-            button.innerText = 'Error - Try again';
-            button.classList.remove('loading');
-            button.classList.add('error');
-
-            setTimeout(() => {
-              button.innerText = originalText;
-              button.classList.remove('error');
-            }, 2000);
-          }
         }
       }
-    );
-  }
+
+      async handleATC(event) {
+        const button = event.target.closest(
+          'button[name="add"][data-atc]'
+        );
+        if (!button) return;
+
+        event.preventDefault();
+
+        const variantInput = this.quickview?.querySelector('.quick-view-variant-id');
+
+        if (!variantInput?.value) {
+          console.error('Variant ID missing');
+          return;
+        }
+
+        const originalText = button.innerText;
+
+        button.disabled = true;
+        button.classList.add('loading');
+        button.innerText = 'Adding...';
+
+        const formData = new FormData();
+        formData.append('id', variantInput.value);
+        formData.append('quantity', 1);
+
+        if (this.cart) {
+          const sections = this.cart
+            .getSectionsToRender()
+            .map((s) => s.id);
+
+          formData.append('sections', sections);
+          formData.append('sections_url', window.location.pathname);
+        }
+
+        try {
+          const response = await fetch('/cart/add.js', {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'X-Requested-With': 'XMLHttpRequest',
+            },
+          });
+
+          if (!response.ok) throw new Error('Add to cart failed');
+
+          const data = await response.json();
+
+          button.innerText = 'Added!';
+          button.classList.remove('loading');
+          button.classList.add('success');
+
+          // Cart update
+          if (this.cart && data?.sections) {
+            publish(PUB_SUB_EVENTS.cartUpdate, {
+              source: 'hotspot-grid',
+              productVariantId: variantInput.value,
+              cartData: data,
+            });
+
+            this.cart.renderContents(data);
+          } else {
+            console.warn('Cart or sections missing');
+          }
+
+        } catch (error) {
+          console.error('ATC Error:', error);
+
+          button.innerText = 'Error';
+          button.classList.remove('loading');
+          button.classList.add('error');
+        } finally {
+          setTimeout(() => {
+            button.disabled = false;
+            button.innerText = originalText;
+            button.classList.remove('success', 'error');
+          }, 2000);
+        }
+      }
+    }
+  );
+}
