@@ -29,7 +29,7 @@
         </div>
         <fieldset class="js product-form__input product-form__input--pill">
           <legend class="form__label">
-            {{ option.name }}:
+            {{ option.name }}
           </legend>
           {%- for value in option.values -%}
             <input
@@ -61,7 +61,7 @@
         {%- endcapture -%}
         <fieldset class="js product-form__input product-form__input--pill">
           <legend class="form__label">
-            {{ option.name }}:
+            {{ option.name }}
           </legend>
           {%- for value in option.values -%}
             {%- capture input_id -%}
