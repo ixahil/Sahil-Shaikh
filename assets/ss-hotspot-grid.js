@@ -89,12 +89,13 @@
           const formData = new FormData();
           formData.append('id', variantInput.value);
           formData.append('quantity', 1);
-          formData.append(
-              'sections',
-              this.cart.getSectionsToRender().map((section) => section.id)
-            );
-          formData.append('sections_url', window.location.pathname);
-
+          if (this.cart) {
+            formData.append(
+                'sections',
+                this.cart.getSectionsToRender().map((section) => section.id)
+              );
+            formData.append('sections_url', window.location.pathname);
+          }
           try {
             const response = await fetch('/cart/add.js', {
               method: 'POST',
@@ -115,8 +116,18 @@
               button.classList.remove('success');
             }, 2000);
 
-            this.cart.renderContents(data);
+            const startMarker = CartPerformance.createStartingMarker('add:wait-for-subscribers');
+            publish(PUB_SUB_EVENTS.cartUpdate, {
+              source: 'product-form',
+              productVariantId: formData.get('id'),
+              cartData: response,
+            }).then(() => {
+              CartPerformance.measureFromMarker('add:wait-for-subscribers', startMarker);
+            });
 
+            CartPerformance.measure("add:paint-updated-sections", () => {
+              this.cart.renderContents(response);
+            });
 
           } catch (error) {
             console.error('Error adding to cart:', error);
