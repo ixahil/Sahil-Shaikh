@@ -56,5 +56,8 @@
 
   {% render 'ss-variant-picker', product: product, variant: variant, section: section %}
 
-
+  <div class="buy-buttons">
+    <input class="variant-id hidden" value="" >
+    <button disabled class="cta" type="button" data-atc>Add to Cart {{ 'icon-arrow-right.svg' | inline_asset_content }}</button>
+  </div>
 </div>
