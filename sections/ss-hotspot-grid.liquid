@@ -50,6 +50,7 @@
                 class="hotspot-collection-grid__tracker"
                 style="top: {{ block.settings.top }}%; left: {{ block.settings.left }}%"
                 data-handle="{{ product.handle }}"
+                aria-label="Quick view {{ product.title | escape }}"
               >
                 {{ 'icon-hotspot.svg' | inline_asset_content }}
               </button>
