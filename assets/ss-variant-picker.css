@@ -57,7 +57,7 @@ fieldset.js.product-form__input.product-form__input--pill input:checked + label{
     display: block;
 }
 
-.size-select__selected{
+.size-select__box{
     display:block;
     padding: 6px 50px 6px 13px;
     border:1px solid #000;
