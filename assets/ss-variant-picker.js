@@ -66,7 +66,7 @@ if(!customElements.get("ss-variant-picker")){
                 
                 const fieldset = this.select.closest("fieldset");
                 const optionName = fieldset.dataset.optionName;
-                const index = Number(fieldset.dataset.optionIndex);
+                const index = Number(fieldset.dataset.optionIndex) - 1; // because option.position is 1 based
 
                 this.selectedOptions[index] = sizeValue;
                 
@@ -79,7 +79,7 @@ if(!customElements.get("ss-variant-picker")){
                
                 const fieldset = input.closest("fieldset");
                 const optionName = fieldset.dataset.optionName;
-                const index = Number(fieldset.dataset.optionIndex);
+                const index = Number(fieldset.dataset.optionIndex) - 1; // because option.position is 1 based
                 
                 this.selectedOptions[index] = input.value;
                 this.handleVariantChange();
