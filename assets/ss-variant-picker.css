@@ -123,3 +123,23 @@ ss-variant-picker{
     align-items:center;
     justify-content: center;
 }
+
+.cta{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    width: 207px;
+    height: 44px;
+    text-transform: uppercase;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-weight:400;
+    line-height: 1;
+    letter-spacing: 0;
+}
+
+.cta svg{width: 24px;}
