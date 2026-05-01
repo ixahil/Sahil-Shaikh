@@ -10,6 +10,7 @@
           this.closeDialog = this.querySelector('.quick-view-dialog__close');
           this.loader = this.dialog.querySelector('.custom-loading__spinner');
           this.quickview = this.querySelector('.quick-view-dialog__content .quick-view');
+          this.cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
         }
 
         connectedCallback() {
