@@ -10,7 +10,7 @@ if(!customElements.get("ss-variant-picker")){
             }
 
             get variantData(){
-                return JSON.parse(document.querySelector("[variant-data]"));
+                return JSON.parse(document.querySelector("[variant-data]").innerHTML);
             }
 
             // get currentVariant(){
