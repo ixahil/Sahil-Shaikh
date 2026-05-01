@@ -97,21 +97,30 @@
         }
 
         connectedCallback() {
-          this.btns.forEach((btn) => {
-            btn.addEventListener('click', this.open.bind(this, btn));
-          });
+          if(this.btns){
+            this.btns.forEach((btn) => {
+              btn.addEventListener('click', this.open.bind(this, btn));
+            });
+          }
 
-          this.closeDialog.addEventListener('click', this.close.bind(this));
-          this.dialog.addEventListener("click", (event) => {
-            if (event.target === this.dialog) {
-              this.close();
-            }
-          });
+          if(this.closeDialog){
+            this.closeDialog.addEventListener('click', this.close.bind(this));
+          }
+          if(this.dialog){
+            this.dialog.addEventListener("click", (event) => {
+              if (event.target === this.dialog) {
+                this.close();
+              }
+            });
+          }
+
+          this.quickview.addEventListener('click', this.handleATC.bind(this));
         }
 
         async open(btn) {
           this.dialog.showModal();
           await this.getMarkup(`/products/${btn.dataset.handle}?sections=ss-quick-view`);
+          
         }
 
         close() {
@@ -143,6 +152,64 @@
           this.close();
           console.error('something wrong with quickview', e);
           throw e;
+        }
+
+        async handleATC(event) {
+          const button = event.target.closest('button[name="add"][data-atc]');
+          if (!button) return;
+
+          event.preventDefault();
+
+          const originalText = button.innerText;
+
+          button.disabled = true;
+          button.classList.add('loading');
+          button.innerText = 'Adding...';
+
+          const variantInput = this.quickview.querySelector(".quick-view-variant-id");
+
+          const formData = {
+            items: [{
+              id: variantInput?.value,
+              quantity: 1
+            }]
+          };
+
+          try {
+            const response = await fetch('/cart/add.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(formData)
+            });
+
+            const data = await response.json();
+            console.log('Added to cart:', data);
+
+            button.innerText = 'Added!';
+            button.classList.remove('loading');
+            button.classList.add('success');
+
+            setTimeout(() => {
+              button.disabled = false;
+              button.innerText = originalText;
+              button.classList.remove('success');
+            }, 2000);
+
+            document.dispatchEvent(new CustomEvent('cart:updated'));
+
+          } catch (error) {
+            console.error('Error adding to cart:', error);
+
+            button.disabled = false;
+            button.innerText = 'Error - Try again';
+            button.classList.remove('loading');
+            button.classList.add('error');
+
+            setTimeout(() => {
+              button.innerText = originalText;
+              button.classList.remove('error');
+            }, 2000);
+          }
         }
       }
     );
