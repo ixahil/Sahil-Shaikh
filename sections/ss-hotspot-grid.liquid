@@ -182,8 +182,7 @@
               body: JSON.stringify(formData)
             });
 
-            const data = await response.json();
-            console.log('Added to cart:', data);
+            if(!response.ok) throw new error("Item not added");
 
             button.innerText = 'Added!';
             button.classList.remove('loading');
@@ -195,15 +194,11 @@
               button.classList.remove('success');
             }, 2000);
 
-            document.dispatchEvent(new CustomEvent(PUB_SUB_EVENTS.cartUpdate, {
-              detail: {
-                source: 'quick-view',
-                items: [{
-                  id: variantInput?.value,
-                  quantity: 1
-                }]
-              }
-            }));
+            publish(PUB_SUB_EVENTS.cartUpdate, {
+              source: 'product-form',
+              productVariantId: variantInput.value,
+              cartData: response,
+            });
 
           } catch (error) {
             console.error('Error adding to cart:', error);
