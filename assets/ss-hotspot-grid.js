@@ -97,6 +97,8 @@ if (!customElements.get('hotspot-grid')) {
         ];
 
         this.variantPicker = this.querySelector("ss-variant-picker");
+
+        console.log(this.variantPicker.selected);
         
         const shouldUpsell = this.upsellColors.includes(this.variantPicker.selected.color) && this.upsellSizes.includes(this.variantPicker.selected.size);
         
