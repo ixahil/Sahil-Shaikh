@@ -103,9 +103,9 @@ if (!customElements.get('hotspot-grid')) {
 
         selectedOptions = selectedOptions?.options?.map(normalize) || [];
 
-        const hasColorMatch = options.some(opt => this.upsellColors.includes(opt));
+        const hasColorMatch = selectedOptions.some(opt => this.upsellColors.includes(opt));
 
-        const hasSizeMatch = options.some(opt => this.upsellSizes.includes(opt));
+        const hasSizeMatch = selectedOptions.some(opt => this.upsellSizes.includes(opt));
 
         const shouldUpsell = hasColorMatch && hasSizeMatch;
         
