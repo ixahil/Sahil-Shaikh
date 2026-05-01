@@ -90,6 +90,8 @@ if (!customElements.get('hotspot-grid')) {
         const formData = new FormData();
         formData.append('id', variantInput.value);
         formData.append('quantity', 1);
+
+        console.log(this.variantPicker);
         
         if(this.variantPicker){
           console.log(this.variantPicker.selectedOptions)
@@ -144,7 +146,7 @@ if (!customElements.get('hotspot-grid')) {
             button.innerText = originalText;
             button.classList.remove('success', 'error');
           }, 2000);
-          CartPerformance.measureFromEvent("add:user-action", evt);
+          CartPerformance.measureFromEvent("add:user-action", event);
 
         }
       }
