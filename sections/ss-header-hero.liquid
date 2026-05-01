@@ -74,8 +74,9 @@
         {% if section.settings.hero_heading != blank %}
           <h2>{{ section.settings.hero_heading | escape }}</h2>
         {% endif %}
-        {% if section.settings.hero_description != blank %}
-          <p>{{ section.settings.hero_description }}</p>
+        {% if section.settings.hero_description_desktop != blank or section.settings.hero_description_mobile != blank %}
+          <p class="desktop-only">{{ section.settings.hero_description_desktop }}</p>
+          <p class="mobile-only">{{ section.settings.hero_description_mobile }}</p>
         {% endif %}
         {% if section.settings.hero_cta_label != blank %}
           <a href="{{ section.settings.hero_cta_link }}" class="cta cta-secondary custom-hero__overlay-btn">
@@ -108,9 +109,10 @@
 </div>
 
 <!-- HERO Footer Strip -->
-{% if section.settings.footer_text != blank %}
+{% if section.settings.footer_text_desktop != blank or section.settings.footer_text_mobile != blank %}
   <div class="custom-footer-strip">
-    <p>{{ section.settings.footer_text }}</p>
+    <p class="desktop-only">{{ section.settings.footer_text_desktop }}</p>
+    <p class="mobile-only">{{ section.settings.footer_text_mobile }}</p>
   </div>
 {% endif %}
 
@@ -163,9 +165,15 @@
     { "type": "text", "label": "Heading", "id": "hero_heading", "default": "The Gift Guide" },
     {
       "type": "textarea",
-      "label": "Description",
-      "id": "hero_description",
+      "label": "Description desktop",
+      "id": "hero_description_desktop",
       "default": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season."
+    },
+    {
+      "type": "textarea",
+      "label": "Description mobile",
+      "id": "hero_description_mobile",
+      "default": "Discover Joy: Your Ultimate Holiday Gift Destination."
     },
     { "type": "text", "label": "Button label", "id": "hero_cta_label", "default": "Shop Now" },
     { "type": "url", "label": "Button link", "id": "hero_cta_link" },
@@ -173,8 +181,15 @@
     { "type": "header", "content": "Footer strip" },
     {
       "type": "textarea",
-      "label": "Strip text",
-      "id": "footer_text",
+      "label": "Strip text desktop",
+      "id": "footer_text_desktop",
+      "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+    },
+
+    {
+      "type": "textarea",
+      "label": "Strip text mobile",
+      "id": "footer_text_mobile",
       "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
     },
 
