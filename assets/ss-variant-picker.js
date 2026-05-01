@@ -24,7 +24,9 @@ if(!customElements.get("ss-variant-picker")){
             }
 
             handleSelect(event){
-                console.log(event.target);
+                const item = event.target;
+                this.selectBox.querySelector(".size-select__selected").innerText = item.dataset.value;
+                this.selectToggle();
             }
 
 
