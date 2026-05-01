@@ -1,5 +1,19 @@
+{%- liquid
+  assign product_form_id = 'product-form-' | append: section.id
+-%}
+{%- capture label_unavailable -%}
+  <span class="visually-hidden label-unavailable">
+    {{- 'products.product.variant_sold_out_or_unavailable' | t -}}
+  </span>
+{%- endcapture -%}
 <ss-variant-picker>
   {% for option in product.options_with_values %}
+    {%- capture input_id -%}
+      {{ section.id }}-{{ option.position }}-{{ forloop.index0 -}}
+    {%- endcapture -%}
+    {%- capture input_name -%}
+      {{ option.name }}-{{ option.position }}
+    {%- endcapture -%}
     <fieldset class="js product-form__input product-form__input--pill">
       <legend class="form__label">
         {{ option.name }}:
@@ -11,7 +25,7 @@
         type="radio"
         id="{{ input_id }}"
         name="{{ input_name | escape }}"
-        value="{{ escaped_value }}"
+        value="{{ value | escape }}"
         form="{{ product_form_id }}"
         {% if value.selected %}
           checked
