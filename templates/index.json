@@ -39,7 +39,7 @@
         "item_Dfww8w": {
           "type": "item",
           "settings": {
-            "product": "",
+            "product": "black-leather-bag",
             "top": 50,
             "left": 50
           }
@@ -47,7 +47,7 @@
         "item_GAP3MH": {
           "type": "item",
           "settings": {
-            "product": "",
+            "product": "blue-silk-tuxedo",
             "top": 50,
             "left": 50
           }
@@ -55,7 +55,31 @@
         "item_nbbVjC": {
           "type": "item",
           "settings": {
-            "product": "",
+            "product": "chequered-red-shirt",
+            "top": 50,
+            "left": 50
+          }
+        },
+        "item_pfzqMm": {
+          "type": "item",
+          "settings": {
+            "product": "classic-leather-jacket",
+            "top": 50,
+            "left": 50
+          }
+        },
+        "item_Pdedad": {
+          "type": "item",
+          "settings": {
+            "product": "classic-varsity-top",
+            "top": 50,
+            "left": 50
+          }
+        },
+        "item_438TQF": {
+          "type": "item",
+          "settings": {
+            "product": "dark-denim-top",
             "top": 50,
             "left": 50
           }
@@ -64,7 +88,10 @@
       "block_order": [
         "item_Dfww8w",
         "item_GAP3MH",
-        "item_nbbVjC"
+        "item_nbbVjC",
+        "item_pfzqMm",
+        "item_Pdedad",
+        "item_438TQF"
       ],
       "name": "SS Hotspot Grid",
       "settings": {
