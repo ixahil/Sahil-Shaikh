@@ -109,15 +109,18 @@ if (!customElements.get('hotspot-grid')) {
         ];
 
         const variantPicker =  this.quickview.querySelector("ss-variant-picker");
-        let selectedOptions = this.variantPicker?.currentVariant?.options?.map(this.normalize) || []; // selected options ["", ""] // Normalize so Black or black should match
+        const selectedOptions = variantPicker?.selectedOptions || {}; // e.g. { Color: 'Black', Size: 'M', Style: 'Slim' }
 
-        const hasColorMatch = selectedOptions.some(opt => this.upsellColors.includes(opt));
-        const hasSizeMatch = selectedOptions.some(opt => this.upsellSizes.includes(opt));
+        // Normalize e.g. Black and black will match
+        const selectedColor = this.normalize(selectedOptions['Color'] ?? selectedOptions['Colour'] ?? '');
+        const selectedSize  = this.normalize(selectedOptions['Size'] ?? '');
+
+        const hasColorMatch = this.upsellColors.includes(selectedColor);
+        const hasSizeMatch  = this.upsellSizes.includes(selectedSize);
+
 
         const shouldUpsell = hasColorMatch && hasSizeMatch;
 
-        console.log("shouldUpsell", shouldUpsell)
-        
         if (shouldUpsell) {
           itemsToAdd.push({
             id: this.upsellVariantId,
