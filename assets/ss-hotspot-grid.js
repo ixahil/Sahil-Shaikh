@@ -89,18 +89,17 @@
           const formData = new FormData();
           formData.append('id', variantInput.value);
           formData.append('quantity', 1);
+          formData.append(
+              'sections',
+              this.cart.getSectionsToRender().map((section) => section.id)
+            );
+          formData.append('sections_url', window.location.pathname);
 
           try {
             const response = await fetch('/cart/add.js', {
               method: 'POST',
               body: formData
             });
-
-            formData.append(
-              'sections',
-              this.cart.getSectionsToRender().map((section) => section.id)
-            );
-            formData.append('sections_url', window.location.pathname);
 
             if(!response.ok) throw new Error("Item not added");
 
