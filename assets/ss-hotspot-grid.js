@@ -116,13 +116,6 @@
               button.classList.remove('success');
             }, 2000);
 
-            publish(PUB_SUB_EVENTS.cartUpdate, {
-              source: 'product-form',
-              productVariantId: variantInput.value,
-              cartData: data,
-            }).then(() => {
-              console.log(this.cart);
-            });
             this.cart.renderContents(data);
 
 
