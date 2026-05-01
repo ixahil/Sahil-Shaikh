@@ -124,3 +124,8 @@ ss-variant-picker{
     align-items:center;
     justify-content: center;
 }
+
+
+.size-select.selected .size-select__selected{
+    text-align:center;
+}
