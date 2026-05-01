@@ -117,6 +117,7 @@
               productVariantId: variantInput.value,
               cartData: response,
             }).then(() => {
+              console.log(this.cart);
               this.cart.renderContents(response);
             });
 
