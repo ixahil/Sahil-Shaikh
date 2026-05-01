@@ -10,7 +10,7 @@ if(!customElements.get("ss-variant-picker")){
 
             connectedCallback(){
                 this.selectBox.addEventListener("click", this.selectToggle.bind(this));
-                
+                this.selectList.querySelector("li").addEventListener("click", this.handleSelect.bind(this));
             }
 
 
@@ -21,6 +21,10 @@ if(!customElements.get("ss-variant-picker")){
                 else{
                     this.select.classList.add("open");
                 }
+            }
+
+            handleSelect(event){
+                console.log(event.target);
             }
 
 
