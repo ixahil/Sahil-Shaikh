@@ -10,7 +10,7 @@
   </span>
 {%- endcapture -%}
 <ss-variant-picker>
-  {% for option in product.options_with_values %}
+  {% for option in product.options %}
     {{ option | json }}
     {% if size_option_names contains option.name %}
       {% capture size_variant_markup %}
