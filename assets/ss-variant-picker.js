@@ -13,6 +13,10 @@ if(!customElements.get("ss-variant-picker")){
                 return JSON.parse(document.querySelector("[variant-data]"));
             }
 
+            get currentVariant(){
+                return this.variantData
+            }
+
             connectedCallback(){
                 this.selectBox.addEventListener("click", this.selectToggle.bind(this));
                 this.selectList.querySelectorAll("li").forEach((item)=>item.addEventListener("click", this.handleSelect.bind(this)));
@@ -36,7 +40,7 @@ if(!customElements.get("ss-variant-picker")){
             }
 
             handleVariantSelect(){
-                console.log(JSON.parse(this.variantData.innerHTML));
+                console.log(this.currentVariant);
             }
 
 
