@@ -9,21 +9,12 @@ if(!customElements.get("ss-variant-picker")){
                 this.vIdInput = this.querySelector(".quick-view-variant-id");
                 
                 this.variantData = JSON.parse(document.querySelector("[variant-data]").innerHTML);
-                this.fieldsets = [...this.querySelectorAll('fieldset[data-option-name]')];
 
-                this.selectedOptions = new Array(this.fieldsets.length).fill(null);
+                this.selectedOptions = {}
                 
                 this.inputs = this.querySelectorAll('input[type="radio"]');
 
                 console.log("Variant Data>>",this.variantData)
-            }
-
-            get allOptionsSelected() {
-                return Object.keys(this.selectedOptions).length === this.getOptionCount();
-            }
-
-            getOptionCount() {
-                return this.querySelectorAll('fieldset').length;
             }
 
             get currentVariant() {
@@ -67,9 +58,8 @@ if(!customElements.get("ss-variant-picker")){
                 
                 const fieldset = this.select.closest("fieldset");
                 const optionName = fieldset.dataset.optionName;
-                const index = this.fieldsets.indexOf(fieldset);
 
-                this.selectedOptions[index] = sizeValue;
+                this.selectedOptions[optionName] = sizeValue;
                 
                 this.handleVariantChange();
             }
@@ -78,13 +68,11 @@ if(!customElements.get("ss-variant-picker")){
                 this.fieldsets.forEach((fieldset) => {
                     const index = this.fieldsets.indexOf(fieldset);
 
-                    // 1. radio inputs (Shopify default)
                     const checked = fieldset.querySelector('input[type="radio"]:checked');
                     if (checked) {
                     this.selectedOptions[index] = checked.value;
                     }
 
-                    // 2. custom dropdown (size select)
                     const selectedText = fieldset.querySelector('.size-select__selected');
                     if (selectedText && selectedText.innerText.trim()) {
                     this.selectedOptions[index] = selectedText.innerText.trim();
@@ -100,9 +88,8 @@ if(!customElements.get("ss-variant-picker")){
                
                 const fieldset = input.closest("fieldset");
                 const optionName = fieldset.dataset.optionName;
-                const index = this.fieldsets.indexOf(fieldset);
                 
-                this.selectedOptions[index] = input.value;
+                this.selectedOptions[optionName] = input.value;
                 this.handleVariantChange();
             }
 
