@@ -24,7 +24,7 @@
             {{ option.name }}
           </legend>
         <div class="size-select">
-         <div class="size-select__box"> <span class="size-select__selected">Choose your size </span><span>{{ "icon-arrow-down.svg" | inline_asset_content }}</span></div>
+         <div class="size-select__box"> <span class="size-select__selected">Choose your size </span><span class="select_down_arrow">{{ "icon-arrow-down.svg" | inline_asset_content }}</span></div>
           <ul class="size-select__list">
           {% for value in option.values %}
             <li class="size-select__list-item" data-value="{{ value | escape }}">{{ value | escape }}</li>
