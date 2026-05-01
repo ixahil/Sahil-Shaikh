@@ -8,7 +8,7 @@ if(!customElements.get("ss-variant-picker")){
             }
 
             connectedCallback(){
-                this.selectBox.addEvenetListener("click", this.openSelect.bind(this))
+                this.selectBox.addEventListener("click", this.openSelect.bind(this))
             }
 
 
