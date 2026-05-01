@@ -4,8 +4,8 @@ if(!customElements.get("ss-variant-picker")){
             constructor(){
                 super();
                 this.select = this.querySelector(".size-select");
-                this.selectBox = this.select(".size-select__box");
-                this.selectList = this.select(".size-select__list");
+                this.selectBox = this.select.querySelector(".size-select__box");
+                this.selectList = this.select.querySelector(".size-select__list");
             }
 
             connectedCallback(){
