@@ -11,6 +11,7 @@
 {%- endcapture -%}
 <ss-variant-picker>
   {% for option in product.options_with_values %}
+    {{ option | json }}
     {% if size_option_names contains option.name %}
       {% capture size_variant_markup %}
         {%- capture input_id -%}
@@ -87,8 +88,8 @@
               {% endif %}
               {{ input_dataset }}
             >
-              {{ value.swatch | json }}
-            <label for="{{ input_id }}" style="--clr:">
+              {{ value | json }}
+            <label for="{{ input_id }}" style="--clr:{{ 'rgb(' | append: value.swatch.color.rgb | append: ')' }}">
               {{ value -}}
               {{ label_unavailable }}
             </label>
