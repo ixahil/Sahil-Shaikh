@@ -32,7 +32,7 @@ if (!customElements.get('hotspot-grid')) {
         this.quickview?.addEventListener('click', (e) =>
           this.handleATC(e)
         );
-        
+
         this.dialog?.addEventListener('close', () => { // Esc key
           this.loader?.classList.remove('hidden');  
           this.quickview?.replaceChildren();     
@@ -56,8 +56,6 @@ if (!customElements.get('hotspot-grid')) {
 
       close() {
         this.dialog?.close();
-        this.loader?.classList.remove('hidden');
-        this.quickview?.replaceChildren();
       }
 
       async getMarkup(uri, signal) {
