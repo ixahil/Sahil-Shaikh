@@ -19,6 +19,10 @@
         {%- capture input_name -%}
           {{ option.name }}-{{ option.position }}
         {%- endcapture -%}
+         <fieldset class="js product-form__input product-form__input--pill">
+          <legend class="form__label">
+            {{ option.name }}
+          </legend>
         <div class="size-select">
           <span class="size-select__selected">Choose your size</span>
           <ul class="size-select__list">
@@ -27,30 +31,6 @@
           {% endfor %}
           </ul>
         </div>
-        <fieldset class="js product-form__input product-form__input--pill hidden">
-          <legend class="form__label">
-            {{ option.name }}
-          </legend>
-          {%- for value in option.values -%}
-            <input
-              type="radio"
-              id="{{ input_id }}"
-              name="{{ input_name | escape }}"
-              value="{{ value | escape }}"
-              form="{{ product_form_id }}"
-              {% if value.selected %}
-                checked
-              {% endif %}
-              {% if option_disabled %}
-                class="disabled"
-              {% endif %}
-              {{ input_dataset }}
-            >
-            <label for="{{ input_id }}">
-              {{ value -}}
-              {{ label_unavailable }}
-            </label>
-          {% endfor %}
         </fieldset>
       {% endcapture %}
     {% endif %}
