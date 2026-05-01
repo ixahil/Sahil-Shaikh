@@ -46,8 +46,8 @@ if(!customElements.get("ss-variant-picker")){
 
             handleSizeSelect(event){
                 const sizeValue = event.target.dataset.value;
-                
                 this.selectBox.querySelector(".size-select__selected").innerText = sizeValue;
+                this.select.classList.add("selected");
                 this.selectToggle();
                 
                 const fieldset = this.select.closest("fieldset");
