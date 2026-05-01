@@ -40,7 +40,7 @@ if(!customElements.get("ss-variant-picker")){
             }
 
             handleVariantSelect(){
-                console.log(this.currentVariant);
+                console.log(this.variantData);
             }
 
 
