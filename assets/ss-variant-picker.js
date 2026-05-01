@@ -133,9 +133,9 @@ if (!customElements.get("ss-variant-picker")) {
             if (comparePriceElement) {
             if (variant.compare_at_price && variant.compare_at_price > variant.price) {
                 comparePriceElement.innerText = this.formatMoney(variant.compare_at_price);
-                comparePriceElement.style.display = "block";
+                comparePriceElement.classList.remove("hidden");
             } else {
-                comparePriceElement.style.display = "none";
+                comparePriceElement.classList.add("hidden");
             }
             }
 
