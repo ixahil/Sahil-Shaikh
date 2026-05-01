@@ -120,7 +120,7 @@
     .custom-header__logo{width:100%;text-align:center;}
     .custom-header__container{justify-content: start; align-items: end;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;}
     .summary.main-menu__toggle-icon{padding-bottom: 2px;}
-    .custom-hero__content{align-items: center;text-align: center;padding-top:50px; padding-bottom: 12px;gap:24px;max-width:100%;}
+    .custom-hero__content{align-items: center;text-align: center;padding: 50px 16px 12px 16px;gap:24px;max-width:100%;}
     .custom-hero__overlay-btn{
         position:absolute;
         bottom:40px;
