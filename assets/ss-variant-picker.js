@@ -3,8 +3,9 @@ if(!customElements.get("ss-variant-picker")){
         class SSVariantPicker extends HTMLElement{
             constructor(){
                 super();
-                this.selectBox = this.querySelector(".size-select__box");
-                this.selectList = this.querySelector(".size-select__list");
+                this.select = this.querySelector(".size-select");
+                this.selectBox = this.select(".size-select__box");
+                this.selectList = this.select(".size-select__list");
             }
 
             connectedCallback(){
@@ -14,11 +15,11 @@ if(!customElements.get("ss-variant-picker")){
 
 
             selectToggle(){
-                if(this.selectList.classList.contains("open")){
-                    this.querySelector(".size-select__list").classList.remove("open");
+                if(this.select.classList.contains("open")){
+                    this.select.classList.remove("open");
                 }
                 else{
-                    this.querySelector(".size-select__list").classList.add("open");
+                    this.select.classList.add("open");
                 }
             }
 
