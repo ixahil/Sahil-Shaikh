@@ -10,7 +10,7 @@
   </span>
 {%- endcapture -%}
 <ss-variant-picker>
-  {% for option in product.options %}
+  {% for option in product.options_with_values %}
     {{ option | json }}
     {% if size_option_names contains option.name %}
       {% capture size_variant_markup %}
@@ -60,9 +60,6 @@
     {% endif %}
     {% if color_option_names contains option.name %}
       {% capture color_variant_markup %}
-        {%- capture input_id -%}
-          {{ section.id }}-{{ option.position }}-{{ forloop.index0 -}}
-        {%- endcapture -%}
         {%- capture input_name -%}
           {{ option.name }}-{{ option.position }}
         {%- endcapture -%}
@@ -74,13 +71,16 @@
             </span>
           </legend>
           {%- for value in option.values -%}
+            {%- capture input_id -%}
+              {{ section.id }}-{{ option.position }}-{{ forloop.index0 -}}
+            {%- endcapture -%}
             <input
               type="radio"
               id="{{ input_id }}"
               name="{{ input_name | escape }}"
               value="{{ value | escape }}"
               form="{{ product_form_id }}"
-              {% if value.selected %}
+              {% if value == option.selected_value %}
                 checked
               {% endif %}
               {% if option_disabled %}
@@ -88,8 +88,7 @@
               {% endif %}
               {{ input_dataset }}
             >
-              {{ value | json }}
-            <label for="{{ input_id }}" style="--clr:{{ 'rgb(' | append: value.swatch.color.rgb | append: ')' }}">
+            <label for="{{ input_id }}" style="--clr:{{ value.swatch.color.rgb | prepend: 'rgb(' | append: ')' }}">
               {{ value -}}
               {{ label_unavailable }}
             </label>
