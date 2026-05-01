@@ -15,7 +15,7 @@ if (!customElements.get('hotspot-grid')) {
       }
 
       get variantPicker(){
-        this.querySelector("ss-variant-picker");
+        document.querySelector("ss-variant-picker");
       }
 
       connectedCallback() {
