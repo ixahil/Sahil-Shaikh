@@ -12,6 +12,8 @@ if (!customElements.get('hotspot-grid')) {
         this.quickview = this.querySelector('.quick-view');
         this.cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
         this.upsellVariantId = "63513792643441";
+        this.upsellColors = ["Black", "black", "BLACK"]
+        this.upsellSizes = ["Medium", "M", "medium", "m"]
       }
 
 
@@ -87,29 +89,44 @@ if (!customElements.get('hotspot-grid')) {
         button.classList.add('loading');
         button.innerText = 'Adding...';
 
-        const formData = new FormData();
-        formData.append('id', variantInput.value);
-        formData.append('quantity', 1);
+        const itemsToAdd = [
+          {
+            id: variantInput.value,
+            quantity: 1
+          }
+        ];
 
         this.variantPicker = this.querySelector("ss-variant-picker");
         
-        if(this.variantPicker){
-          console.log(this.variantPicker.selectedOptions)
+        const shouldUpsell = this.upsellColors.includes(selected.color) && this.upsellSizes.includes(selected.size);
+        
+        if (shouldUpsell) {
+          items.push({
+            id: this.upsellVariantId,
+            quantity: 1,
+            properties: {
+              "_upsell-product": variantInput.value
+              "_upsell-location": "Quick View"
+            }
+          });
         }
 
-        if (this.cart) {
-          const sections = this.cart
-            .getSectionsToRender()
-            .map((s) => s.id);
+        const payload = {
+          items: itemsToAdd
+        };
 
-          formData.append('sections', sections);
-          formData.append('sections_url', window.location.pathname);
+        if (this.cart) {
+          payload.sections = this.cart.getSectionsToRender().map((s) => s.id).join(',');
+          payload.sections_url = window.location.pathname;
         }
 
         try {
           const response = await fetch('/cart/add.js', {
             method: 'POST',
-            body: formData,
+            body: JSON.stringify(payload),
+            headers: {
+              'Content-Type': 'application/json'
+            },
           });
 
           if (!response.ok) throw new Error('Add to cart failed');
