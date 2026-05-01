@@ -19,7 +19,7 @@
         {%- capture input_name -%}
           {{ option.name }}-{{ option.position }}
         {%- endcapture -%}
-         <fieldset class="js product-form__input product-form__input--pill">
+         <fieldset class="js product-form__input product-form__input--pill" data-option-name="{{ option.name }}">
           <legend class="form__label">
             {{ option.name }}
           </legend>
@@ -39,7 +39,7 @@
         {%- capture input_name -%}
           {{ option.name }}-{{ option.position }}
         {%- endcapture -%}
-        <fieldset class="js product-form__input product-form__input--pill">
+        <fieldset class="js product-form__input product-form__input--pill" data-option-name="{{ option.name }}">
           <legend class="form__label">
             {{ option.name }}
           </legend>
