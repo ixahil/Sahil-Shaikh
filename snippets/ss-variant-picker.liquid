@@ -11,7 +11,6 @@
 {%- endcapture -%}
 <ss-variant-picker>
   {% for option in product.options_with_values %}
-    {{ option | json }}
     {% if size_option_names contains option.name %}
       {% capture size_variant_markup %}
         {%- capture input_id -%}
@@ -101,3 +100,4 @@
   {{ color_variant_markup }}
   {{ size_variant_markup }}
 </ss-variant-picker>
+
