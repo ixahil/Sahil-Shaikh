@@ -198,6 +198,8 @@
               source: 'product-form',
               productVariantId: variantInput.value,
               cartData: response,
+            }).then(() => {
+              document.querySelector('cart-drawer').open();
             });
 
           } catch (error) {
