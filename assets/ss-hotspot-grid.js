@@ -86,19 +86,21 @@
           const variantInput = this.quickview.querySelector(".quick-view-variant-id");
           if(!variantInput) throw new Error("something wrong")
 
-          const formData = {
-            'items': [{
-              'id': variantInput.value,
-              'quantity': 2
-            }]
-          };
+          const formData = new FormData();
+          formData.append('id', variantId);
+          formData.append('quantity', 1);
 
           try {
             const response = await fetch('/cart/add.js', {
               method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(formData)
+              body: formData
             });
+
+            formData.append(
+              'sections',
+              this.cart.getSectionsToRender().map((section) => section.id)
+            );
+            formData.append('sections_url', window.location.pathname);
 
             if(!response.ok) throw new Error("Item not added");
 
