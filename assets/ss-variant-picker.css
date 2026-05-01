@@ -53,7 +53,7 @@ fieldset.js.product-form__input.product-form__input--pill input:checked + label{
     margin-bottom: 12px;
 }
 
-.size-select__list.open{
+.size-select.open .size-select__list{
     display: block;
 }
 
