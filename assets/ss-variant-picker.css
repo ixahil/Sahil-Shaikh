@@ -87,7 +87,7 @@ fieldset.js.product-form__input.product-form__input--pill input:checked + label{
     overflow-y: auto;
 }
 
-.size-select__list:hover, .size-select__list.active{
+.size-select__list-item:hover, .size-select__list-item.active{
     background: #000;
     color: #fff
 }
