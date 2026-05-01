@@ -120,13 +120,13 @@
             publish(PUB_SUB_EVENTS.cartUpdate, {
               source: 'product-form',
               productVariantId: formData.get('id'),
-              cartData: response,
+              cartData: data,
             }).then(() => {
               CartPerformance.measureFromMarker('add:wait-for-subscribers', startMarker);
             });
 
             CartPerformance.measure("add:paint-updated-sections", () => {
-              this.cart.renderContents(response);
+              this.cart.renderContents(data);
             });
 
           } catch (error) {
