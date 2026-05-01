@@ -127,7 +127,7 @@
         left:50%;
         transform:translateX(-50%);
     }
-    ..custom-hero__desktop-image{display: none;}
+    .custom-hero__desktop-image{display: none;}
     
 
 }
