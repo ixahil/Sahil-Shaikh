@@ -7,7 +7,10 @@ if(!customElements.get("ss-variant-picker")){
                 this.selectBox = this.select.querySelector(".size-select__box");
                 this.selectList = this.select.querySelector(".size-select__list");
                 this.vIdInput = document.querySelector(".quick-view-variant-id")
-                this.variantData = document.querySelector("[variant-data]");
+            }
+
+            get variantData(){
+                return JSON.parse(document.querySelector("[variant-data]"));
             }
 
             connectedCallback(){
