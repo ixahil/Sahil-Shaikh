@@ -11,7 +11,7 @@ if (!customElements.get('hotspot-grid')) {
         this.loader = this.querySelector('.custom-loading__spinner');
         this.quickview = this.querySelector('.quick-view');
         this.cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
-        this.upsellVariantId = "63513792643441";
+        this.upsellVariantId = "63513792643441"; // Soft Winter Jacket - Black Medium
         this.normalize = (v) => v?.toLowerCase().trim();
         this.upsellColors = ["black"];
         this.upsellSizes = ["m", "medium"];
@@ -19,10 +19,12 @@ if (!customElements.get('hotspot-grid')) {
 
 
       connectedCallback() {
+        // hotspot btns use to toggle popup/dialog
         this.btns?.forEach((btn) =>
           btn.addEventListener('click', () => this.open(btn))
         );
 
+        // handle toggle states
         this.closeBtn?.addEventListener('click', () => this.close());
 
         this.dialog?.addEventListener('click', (e) => {
@@ -33,7 +35,8 @@ if (!customElements.get('hotspot-grid')) {
           this.handleATC(e)
         );
 
-        this.dialog?.addEventListener('close', () => { // Esc key
+        // Esc key
+        this.dialog?.addEventListener('close', () => { 
           this.loader?.classList.remove('hidden');  
           this.quickview?.replaceChildren();     
         });
@@ -80,6 +83,7 @@ if (!customElements.get('hotspot-grid')) {
         }
       }
 
+      // using here for ease but can be uplifted with events
       async handleATC(event) {
         const button = event.target.closest(
           'button[name="add"][data-atc]'
