@@ -57,15 +57,17 @@ fieldset.js.product-form__input.product-form__input--pill input:checked + label{
     display: block;
 }
 
-.size-select__box{
-    display:block;
+.size-select__box {
+    display: flex;
     padding: 6px 50px 6px 13px;
-    border:1px solid #000;
+    border: 1px solid #000;
     background: #fff;
-    user-select:none;
+    -webkit-user-select: none;
+    user-select: none;
     min-height: 44px;
     text-align: center;
     position: relative;
+    align-items: center;
 }
 
 .size-select__list{
