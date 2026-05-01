@@ -13,6 +13,8 @@ if(!customElements.get("ss-variant-picker")){
                 this.selectedOptions = {};
                 
                 this.inputs = this.querySelectorAll('input[type="radio"]');
+
+                console.log("Variant Data>>",this.variantData)
             }
 
             get currentVariant(){
